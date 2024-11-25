@@ -19,7 +19,7 @@ The primary goal of this website is to:
 - **GitHub Pages** for hosting.
 - **Visual Studio Code** for development.
 - **WordPress CMS** for back-end content management.
-- **APIs** integration planned for Garmin, URA, and iOS platforms.
+- **APIs** integration planned for Garmin, OURA, and IOS.
 
 ---
 
@@ -28,6 +28,7 @@ The primary goal of this website is to:
 - A simple, responsive design for client engagement.
 - Ongoing API integration for expanded functionality.
 - Documentation and growth tracking through this repository.
+- Headless Deployment for speed.
 
 ---
 
@@ -35,8 +36,11 @@ The primary goal of this website is to:
 
 To illustrate the development journey, this repository includes screenshots of the website at various stages. These are embedded below to show the website’s evolution.
 
-- **Home Page:** [View Screenshot](https://drive.google.com/file/d/11hT8iYkgnFlPv9kcJZZsqj7VyXj9bzb9/view?usp=drive_link)
-- **Bookings Page:** [View Screenshot](https://drive.google.com/file/d/1dMPJD_2ZbteJIbdzzB9kKVcus4p-1b-P/view?usp=drive_link)
+### Home Page
+![Home Page Screenshot](https://drive.google.com/uc?id=11hT8iYkgnFlPv9kcJZZsqj7VyXj9bzb9)
+
+### Bookings Page
+![Bookings Page Screenshot](https://drive.google.com/uc?id=1dMPJD_2ZbteJIbdzzB9kKVcus4p-1b-P)
 
 ---
 
