@@ -10,7 +10,7 @@ The primary goal of this website is to:
 
 - Introduce clients to my coaching services.
 - Showcase the evolution of the website’s design and functionality over time.
-- Provide integration with APIs such as Garmin, URA, and iOS to enhance the user experience.
+- Provide integration with APIs such as Garmin, OURA, and IOS to expand my analytics offering.
 
 ---
 
