@@ -16,7 +16,7 @@
 <meta name="description" content="Personalised, periodised online strength coaching for busy professionals. Programs built on your real numbers, plus an app that tells you exactly what to do every session. Book a free discovery call.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --orange:#ff6500;
@@ -230,8 +230,7 @@
   .portrait-wrap .badge .l{font-size:.78rem;color:#c4c7cd;margin-top:4px}
   .about-grid h2{font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:800}
   .about-grid p{color:var(--grey);font-size:1.08rem;margin-top:18px}
-  .about-grid .sig{font-family:"Caveat",cursive;font-size:2.1rem;color:var(--ink);margin-top:18px}
-  .principles{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .principles{display:grid;grid-template-columns:repeat(2,max-content);gap:12px;margin-top:24px}
   .principles span{font-family:var(--display);font-weight:600;font-size:.86rem;border:1px solid var(--line);border-radius:999px;padding:8px 15px;color:var(--ink)}
   .principles span .accent{margin-right:6px}
 
@@ -391,13 +390,13 @@
       <div class="step reveal">
         <div class="num">02</div>
         <h3>Get your bespoke program</h3>
-        <p>I build periodised phases (accumulation, intensification and beyond) with every load calculated from your real limiting lifts, not a generic template.</p>
+        <p>Your program is built as periodised phases (accumulation, intensification and beyond), with every load calculated from your real limiting lifts, not a generic template.</p>
         <span class="pin">Built around your numbers</span>
       </div>
       <div class="step reveal">
         <div class="num">03</div>
         <h3>Train in the app</h3>
-        <p>Open it, see today's session, log each set as you go. The app keeps score, tracks your trend phase to phase, and I adjust as you progress.</p>
+        <p>Open it, see today's session, log each set as you go. The app keeps score, tracks your trend phase to phase, and your coach adjusts the plan as you progress.</p>
         <span class="pin">Always know what's next</span>
       </div>
     </div>
@@ -446,23 +445,22 @@
 <section class="block alt" id="about">
   <div class="wrap about-grid">
     <div class="portrait-wrap reveal">
-      <img src="https://www.theinfinitebody.com/wp-content/uploads/2024/11/Dave-Roberson-Portrait-01-800x1133.jpg" alt="Dave Robertson, founder of The Infinite Body"
+      <img src="assets/coach-portrait.jpg" width="800" height="1133" loading="lazy" decoding="async" alt="The coach behind The Infinite Body"
            onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='grid'">
-      <div class="fallback" style="display:none;aspect-ratio:3/4;border-radius:18px;background:linear-gradient(135deg,#33353a,#1f2024);place-items:center;color:#9aa0a8;font-family:var(--display);text-align:center;padding:20px">Portrait of Dave<br>(drop in your photo)</div>
+      <div class="fallback" style="display:none;aspect-ratio:3/4;border-radius:18px;background:linear-gradient(135deg,#33353a,#1f2024);place-items:center;color:#9aa0a8;font-family:var(--display);text-align:center;padding:20px">Your portrait<br>(drop in your photo)</div>
       <div class="badge"><div class="n">Since '08</div><div class="l">coaching real people</div></div>
     </div>
     <div class="reveal">
       <span class="eyebrow">The Infinite Body method</span>
       <h2>Build on what's strong. <span class="accent">Engineer</span> around what's limiting.</h2>
-      <p>I've coached since 2008, and the through-line has never changed: lasting progress comes from a system, not motivation. We start from your strengths and your real data, then methodically train the limiting factors holding the rest back.</p>
-      <p>A stronger, more capable body doesn't stay in the gym. My clients carry that discipline, energy and confidence into the work and life they care about most. That's the whole point of building an <em>infinite</em> body.</p>
+      <p>The through-line hasn't changed since 2008: lasting progress comes from a system, not motivation. We start from your strengths and your real data, then methodically train the limiting factors holding the rest back.</p>
+      <p>A stronger, more capable body doesn't stay in the gym. Clients carry that discipline, energy and confidence into the work and life they care about most. That's the whole point of building an <em>infinite</em> body.</p>
       <div class="principles">
         <span><span class="accent">●</span>Strengths-based</span>
         <span><span class="accent">●</span>Periodised</span>
         <span><span class="accent">●</span>Data-driven</span>
         <span><span class="accent">●</span>1:1 &amp; accountable</span>
       </div>
-      <div class="sig">Dave Robertson</div>
     </div>
   </div>
 </section>
@@ -538,8 +536,7 @@
     <h2 class="reveal">Let's build a body and a plan that <span class="accent">keep going</span>.</h2>
     <p class="reveal">Book a free discovery call. Twenty minutes, no pressure, no pitch. We'll see if we're a fit and map your first move.</p>
     <div class="reveal">
-      <!-- TODO: replace href with your real scheduler link (Calendly / Cal.com / SavvyCal) -->
-      <a class="btn btn-primary btn-lg" href="https://calendly.com/REPLACE-WITH-YOUR-LINK/discovery-call">Book My Free Discovery Call <span class="arrow">→</span></a>
+      <a class="btn btn-primary btn-lg" href="https://calendar.app.google/ZyW4qWin1iDgaxhX6">Book a Free Discovery Call <span class="arrow">→</span></a>
     </div>
     <p class="micro reveal">Prefer email? <a href="mailto:hello@theinfinitebody.com" style="color:#ff9a4d;border-bottom:1px solid rgba(255,154,77,.4)">Get in touch →</a></p>
   </div>
