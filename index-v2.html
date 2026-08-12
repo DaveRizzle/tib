@@ -208,14 +208,11 @@
 
   /* app proof (dark) */
   .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;position:relative}
-  .screen-card{position:relative;border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow-pop);border:1px solid rgba(255,255,255,.08)}
-  .screen-card .bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#f1f2f4;border-bottom:1px solid var(--line)}
-  .screen-card .bar i{width:10px;height:10px;border-radius:50%;background:#d7dade;display:block}
-  .screen-card .bar .url{margin-left:8px;font-size:.72rem;color:#9aa0a8;font-family:var(--display);letter-spacing:.02em}
+  .screen-card{position:relative;border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-pop);border:1px solid rgba(255,255,255,.1)}
   .screen-card img{width:100%}
-  .screens-stack{position:relative}
-  .screens-stack .screen-card.front{position:absolute;width:46%;right:-6%;bottom:-30px;z-index:3}
-  .screens-stack .screen-card.back{width:84%;z-index:1}
+  .screens-stack{position:relative;display:flex;flex-direction:column}
+  .screens-stack .screen-card.back{width:88%;z-index:1}
+  .screens-stack .screen-card.front{width:72%;align-self:flex-end;margin-top:-34px;z-index:3}
   .proof-points{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:6px}
   .proof-points li{display:flex;gap:16px;align-items:flex-start}
   .proof-points .ic{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(var(--orange-rgb),.16);display:grid;place-items:center}
@@ -296,7 +293,8 @@
     .steps{gap:16px}
     .trust .wrap{grid-template-columns:repeat(2,1fr)}
     .portrait-wrap{max-width:380px;margin:0 auto}
-    .screens-stack .screen-card.front{position:static;width:60%;margin:18px auto 0}
+    .screens-stack{padding-bottom:0}
+    .screens-stack .screen-card.front{position:static;width:78%;margin:18px auto 0}
     .screens-stack .screen-card.back{width:100%}
     section.block{padding:72px 0}
   }
@@ -415,12 +413,10 @@
     <div class="proof-grid">
       <div class="screens-stack reveal">
         <div class="screen-card back">
-          <div class="bar"><i></i><i></i><i></i><span class="url">theinfinitebody.com</span></div>
-          <img src="assets/app-training-matrix.jpg" width="716" height="1227" loading="lazy" decoding="async" alt="The Infinite Body app: weekly Training Matrix and program with sets, reps, tempo and rest for each prescribed exercise">
+          <img src="assets/app-week-matrix.jpg" width="716" height="334" loading="lazy" decoding="async" alt="The Training Matrix in the app: a week of sessions laid out day by day, with goal, phase and method above it">
         </div>
         <div class="screen-card front">
-          <div class="bar"><i></i><i></i><i></i></div>
-          <img src="assets/app-phase-logging.jpg" width="480" height="872" loading="lazy" decoding="async" alt="Logging sets for DB Shoulder Press in the app, 4 of 4 sets done">
+          <img src="assets/app-session-detail.jpg" width="716" height="490" loading="lazy" decoding="async" alt="A prescribed exercise in the app: Dip, with sets, reps, tempo and rest, and four of four sets logged">
         </div>
       </div>
       <div class="reveal">
