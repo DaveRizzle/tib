@@ -44,7 +44,7 @@
     --maxw:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
   body{
     font-family:var(--body);
     color:var(--ink);
@@ -52,6 +52,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    overflow-x:clip;
   }
   h1,h2,h3,h4{font-family:var(--display);line-height:1.05;letter-spacing:-.01em;font-weight:700}
   a{color:inherit;text-decoration:none}
@@ -664,7 +665,7 @@ function glassMaterial(){
 
 let bounds={left:0,right:0,floor:0,top:0};
 let rollingMode=false,settledFor=0,rollDirection=-1,rollStartedAt=0,rollRampDuration=1.6,glideSpeed=0,rollEndsAt=Infinity,finishedFor=0,animationComplete=false,currentViewWidth=0,mobileMode=false,desktopMode=false;
-let stageRect=null,readableRects=[],pixelsPerWorld=1;
+let stageRect=null,readableRects=[],pixelsPerWorld=1,fittedWidth=0,fittedHeight=0;
 const readableElements=[...document.querySelectorAll('.marble-copy .eyebrow,#marbleTitle,.marble-copy .lede,.marble-copy .hero-cta,.marble-copy .micro')];
 const random=(min,max)=>min+Math.random()*(max-min);
 function refreshReadableRects(){stageRect=stage.getBoundingClientRect();pixelsPerWorld=stageRect.height/Math.max(bounds.top-bounds.floor,1);readableRects=readableElements.map(el=>el.getBoundingClientRect()).filter(rect=>rect.width&&rect.height)}
@@ -687,6 +688,7 @@ function protectReadableArea(body){
 function fit(){
   rollingMode=false;settledFor=0;rollDirection=-1;rollStartedAt=0;glideSpeed=0;rollEndsAt=Infinity;finishedFor=0;animationComplete=reducedMotion;
   const rect=stage.getBoundingClientRect();
+  fittedWidth=rect.width;fittedHeight=rect.height;
   mobileMode=rect.width<620;
   desktopMode=rect.width>=920;
   renderer.setSize(rect.width,rect.height,false);
@@ -779,7 +781,17 @@ function init(){
     balls.forEach(mesh=>{const shader=mesh.userData.marbleMaterial.userData.shader;if(shader&&!animationComplete)shader.uniforms.time.value=reducedMotion?0:elapsed*.05;if(reducedMotion)protectReadableArea(mesh.userData.body)});
     renderer.render(scene,camera);
   };
-  window.addEventListener('resize',()=>{balls.splice(0).forEach(mesh=>{scene.remove(mesh);mesh.traverse(child=>{if(child.isMesh){child.geometry.dispose();child.material.dispose()}})});fit()});
+  function resizeScene(){
+    const rect=stage.getBoundingClientRect();
+    // iOS Safari fires window.resize as its browser bars move. Keep the scene
+    // intact unless the actual hero canvas dimensions changed (for example,
+    // on orientation change).
+    if(Math.abs(rect.width-fittedWidth)<2&&Math.abs(rect.height-fittedHeight)<2)return;
+    balls.splice(0).forEach(mesh=>{scene.remove(mesh);mesh.traverse(child=>{if(child.isMesh){child.geometry.dispose();child.material.dispose()}})});
+    fit();
+  }
+  window.addEventListener('resize',resizeScene,{passive:true});
+  if('ResizeObserver' in window){new ResizeObserver(resizeScene).observe(stage)}
   loop();
 }
 
