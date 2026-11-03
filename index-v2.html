@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/favicon-tib-180.png">
 <title>The Infinite Body | Online Strength Coaching, Built on a System</title>
-<meta name="description" content="Personalised, periodised online strength coaching for busy professionals. Programs built on your real numbers, plus an app that tells you exactly what to do every session. Book a free discovery call.">
+<meta name="description" content="Personalised, periodised online strength coaching for busy professionals. Programs built on your real numbers, plus an app that tells you exactly what to do every session.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -99,7 +99,6 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
   .nav .logo{flex:none;display:flex;align-items:center}
   .nav .logo img{height:30px;width:auto;display:block}
-  @media(max-width:860px){.nav .logo img{height:24px}}
   .nav-links{display:flex;align-items:center;gap:28px}
   .nav-links a.link{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);opacity:.78;transition:opacity .15s}
   .nav-links a.link:hover{opacity:1}
@@ -144,6 +143,38 @@
   .hero-cta .micro{font-size:.86rem;color:var(--grey);margin-left:2px}
   .hero-copy p.hero-cta{margin-top:14px}
   .hero-cta .micro b{color:var(--ink)}
+
+  /* ---------- marbles intro ---------- */
+  .marble-hero{
+    position:relative;isolation:isolate;overflow:hidden;color:#fff;
+    min-height:clamp(560px,calc(100svh - 74px),700px);
+    background:linear-gradient(120deg,var(--ink-deep),var(--charcoal) 72%,#202126);
+  }
+  .marble-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.34;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:54px 54px;
+    -webkit-mask-image:radial-gradient(740px 580px at 78% 42%,#000,transparent 82%);mask-image:radial-gradient(740px 580px at 78% 42%,#000,transparent 82%);
+  }
+  .marble-hero .wrap{position:relative;z-index:2;min-height:inherit;display:flex;align-items:center;padding-top:64px;padding-bottom:64px}
+  .marble-copy{position:relative;z-index:2;width:min(54%,600px);padding:10px 0 20px}
+  .marble-copy h1{max-width:620px;font-size:clamp(2.8rem,5.2vw,4.7rem);font-weight:800;letter-spacing:-.045em;line-height:.99;text-wrap:balance}
+  .marble-copy .lede{max-width:470px;color:#c4c7cd;font-size:1.14rem;margin:22px 0 30px;text-wrap:pretty}
+  .marble-copy .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .marble-copy .micro{display:block;color:var(--grey-light);font-size:.9rem;margin-top:16px}
+  .marble-copy .reveal{animation:heroUp .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .marble-copy .d1{animation-delay:.12s}.marble-copy .d2{animation-delay:.22s}.marble-copy .d3{animation-delay:.32s}.marble-copy .d4{animation-delay:.42s}
+  .marble-stage{position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none}
+  #marbles{position:absolute;inset:0;width:100%;height:100%;display:block}
+  @media(max-width:760px){
+    .marble-hero{min-height:740px}
+    .marble-hero .wrap{align-items:flex-start;padding-top:56px;padding-bottom:0}
+    .marble-copy{width:100%;max-width:560px}
+    .marble-copy h1{font-size:clamp(2.8rem,11vw,4rem);max-width:500px}
+    .marble-copy .lede{max-width:390px;font-size:1.02rem;margin:18px 0 23px}
+    .marble-copy .hero-cta .btn{width:auto}
+    .marble-stage{inset:0}
+  }
+  @media(max-width:620px){.marble-stage{z-index:3}}
+  @media(max-width:480px){.marble-copy .hero-cta .btn{width:100%;justify-content:center}}
 
   /* device frame */
   .device{
@@ -235,13 +266,11 @@
   .principles span .accent{margin-right:6px}
 
   /* testimonials */
-  .placeholder-note{font-size:.8rem;font-weight:600;color:#b06400;background:#fff6ec;border:1px dashed #f0b270;border-radius:8px;padding:6px 12px;display:inline-block;margin-bottom:22px}
   .tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .tcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-card)}
-  .tcard .stars{color:var(--orange);letter-spacing:3px;font-size:.95rem}
   .tcard blockquote{font-size:1.04rem;color:var(--ink);line-height:1.55;font-style:italic}
   .tcard .who{display:flex;align-items:center;gap:12px;margin-top:auto}
-  .tcard .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ffd9bd,#ffb27a);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#9a4d00}
+  .tcard .av{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
   .tcard .who b{font-family:var(--display);font-size:.98rem}
   .tcard .who span{display:block;font-size:.82rem;color:var(--grey)}
 
@@ -281,6 +310,7 @@
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
+    .marble-copy .reveal{opacity:1;transform:none}
   }
 
   /* responsive */
@@ -303,6 +333,9 @@
     .trust .wrap{grid-template-columns:1fr;gap:12px}
   }
 </style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.131.1/build/three.module.js"}}
+</script>
 </head>
 <body>
 
@@ -316,12 +349,29 @@
       <a class="link" href="#app">The app</a>
       <a class="link" href="#about">About</a>
       <a class="link" href="#faq">FAQ</a>
-      <a class="btn btn-primary" href="#book">Book a Call</a>
+      <a class="btn btn-primary" href="#book">Book a Free Discovery Call</a>
     </nav>
   </div>
 </header>
 
 <span id="top"></span>
+
+<!-- ============ MARBLES INTRO ============ -->
+<section class="marble-hero" aria-labelledby="marbleTitle">
+  <div class="wrap">
+    <div class="marble-copy">
+      <span class="eyebrow on-dark reveal">Strength training, with a little more magic</span>
+      <h1 id="marbleTitle" class="reveal d1">Lost your training <span class="accent">marbles?</span></h1>
+      <p class="lede reveal d2">Too many plans. Too much advice. A coaching system that gathers the pieces, finds your focus, and tells you what to do next.</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn btn-primary btn-lg" href="#how">Find your training focus <span class="arrow">→</span></a>
+        <a class="btn btn-ghost on-dark btn-lg" href="#app">See the app</a>
+      </div>
+      <small class="micro reveal d4">A clear plan, expert coaching, and an app that keeps it all together.</small>
+    </div>
+  </div>
+  <div class="marble-stage" aria-hidden="true"><canvas id="marbles"></canvas></div>
+</section>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -338,7 +388,7 @@
     </div>
 
     <div class="device reveal d2">
-      <img src="assets/app-phase-logging.jpg" width="480" height="872" fetchpriority="high" decoding="async" alt="The Infinite Body app showing a workout phase with set-by-set logging">
+      <img src="assets/app-phase-logging.jpg" width="480" height="872" loading="lazy" decoding="async" alt="The Infinite Body app showing a workout phase with set-by-set logging">
       <div class="tag"><span class="dot"></span> 4 / 4 sets logged</div>
     </div>
   </div>
@@ -401,7 +451,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:42px" class="reveal">
-      <a class="btn btn-primary btn-lg" href="#book">Start with a Free Call <span class="arrow">→</span></a>
+      <a class="btn btn-primary btn-lg" href="#book">Book a Free Discovery Call <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -445,15 +495,15 @@
 <section class="block alt" id="about">
   <div class="wrap about-grid">
     <div class="portrait-wrap reveal">
-      <img src="assets/coach-portrait.jpg" width="800" height="1133" loading="lazy" decoding="async" alt="The coach behind The Infinite Body"
+      <img src="assets/coach-portrait.jpg" width="1600" height="1959" loading="lazy" decoding="async" alt="David Robertson in his home gym"
            onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='grid'">
-      <div class="fallback" style="display:none;aspect-ratio:3/4;border-radius:18px;background:linear-gradient(135deg,#33353a,#1f2024);place-items:center;color:#9aa0a8;font-family:var(--display);text-align:center;padding:20px">Your portrait<br>(drop in your photo)</div>
+      <div class="fallback" style="display:none;aspect-ratio:3/4;border-radius:18px;background:linear-gradient(135deg,#33353a,#1f2024);place-items:center;color:#9aa0a8;font-family:var(--display);text-align:center;padding:20px">Coach portrait temporarily unavailable</div>
       <div class="badge"><div class="n">Since '08</div><div class="l">coaching real people</div></div>
     </div>
     <div class="reveal">
       <span class="eyebrow">The Infinite Body method</span>
-      <h2>Build on what's strong. <span class="accent">Engineer</span> around what's limiting.</h2>
-      <p>The through-line hasn't changed since 2008: lasting progress comes from a system, not motivation. We start from your strengths and your real data, then methodically train the limiting factors holding the rest back.</p>
+      <h2>Build on your strengths. <span class="accent">Train what’s holding you back.</span></h2>
+      <p>Your program starts with your goals and current strength. We build on what you do well, then focus your training on the lifts and areas that need the most attention. Each phase has a clear purpose, and your coach adjusts the plan as you progress.</p>
       <p>A stronger, more capable body doesn't stay in the gym. Clients carry that discipline, energy and confidence into the work and life they care about most. That's the whole point of building an <em>infinite</em> body.</p>
       <div class="principles">
         <span><span class="accent">●</span>Strengths-based</span>
@@ -471,23 +521,19 @@
     <div class="section-head center reveal">
       <span class="eyebrow center">In their words</span>
       <h2>Real people. <span class="accent">Real progress.</span></h2>
-      <span class="placeholder-note">↪ Placeholder: swap in 3 genuine client quotes (name, role, and a specific result if you have one).</span>
     </div>
     <div class="tcards">
       <div class="tcard reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"[Client quote, ideally with a concrete result, e.g. added 20&nbsp;kg to my squat in 12 weeks while travelling constantly for work.]"</blockquote>
-        <div class="who"><span class="av">A</span><div><b>[First name]</b><span>[Role / context]</span></div></div>
+        <blockquote>“Dave is helping me to strengthen my core, knee’s and back so I play soccer at a higher level. I’m getting stronger and leaner and I really enjoy the sessions.”</blockquote>
+        <div class="who"><img class="av" src="assets/donve-simpson.jpg" width="42" height="42" alt="Donve’ Simpson"><div><b>Donve’ Simpson</b><span>Soccer player</span></div></div>
       </div>
       <div class="tcard reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"[Client quote covering what changed for them: structure, confidence, finally seeing progress, no more guesswork.]"</blockquote>
-        <div class="who"><span class="av">B</span><div><b>[First name]</b><span>[Role / context]</span></div></div>
+        <blockquote>“Grateful for David’s assistance after a lower back injury. Today I PR’d 100Kg on my backsquat again for the first time since and it felt great!”</blockquote>
+        <div class="who"><img class="av" src="assets/hylton-heather.jpg" width="42" height="42" alt="Hylton Heather"><div><b>Hylton Heather</b><span>Strength training after injury</span></div></div>
       </div>
       <div class="tcard reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"[Client quote covering what it's like to work with you and use the app day to day.]"</blockquote>
-        <div class="who"><span class="av">C</span><div><b>[First name]</b><span>[Role / context]</span></div></div>
+        <blockquote>“Dave is an expert in his field, and has pushed me through mental and physical challenges I never dreamt I could achieve. I am not a ‘gym person’, but I find myself looking forward to my workouts now! It really has been a life changing experience!”</blockquote>
+        <div class="who"><img class="av" src="assets/catherine-gillespie.jpg" width="42" height="42" alt="Catherine Gillespie"><div><b>Catherine Gillespie</b><span>Not a gym person</span></div></div>
       </div>
     </div>
   </div>
@@ -511,7 +557,7 @@
       </details>
       <details>
         <summary>Is this online, in person, or both? <span class="pm">+</span></summary>
-        <p>[Confirm your delivery here.] Programming and the app are fully remote, so you can train wherever you are, with [in-person sessions / video check-ins / messaging support] depending on what you need.</p>
+        <p>Programming and the app are fully remote, so you can train wherever you are.</p>
       </details>
       <details>
         <summary>What is the app, and does it cost extra? <span class="pm">+</span></summary>
@@ -519,11 +565,11 @@
       </details>
       <details>
         <summary>How much time per week does it take? <span class="pm">+</span></summary>
-        <p>[Set expectations, e.g. typically 3 to 4 focused sessions a week, programmed around your schedule.] We design the plan around the time you realistically have, not an ideal you can't sustain.</p>
+        <p>We design the plan around the time you realistically have, not an ideal you can't sustain.</p>
       </details>
       <details>
         <summary>What does coaching cost? <span class="pm">+</span></summary>
-        <p>[Add a price range or "from £X/month" here. Naming a ballpark filters for fit and increases qualified bookings.] We'll cover what's right for your goals on the call.</p>
+        <p>Strength-only coaching is typically equivalent to $400–$500 per month, depending on the coaching period. Period-specific bundle discounts are available. Book a free discovery call and we’ll talk through the options that fit your goals.</p>
       </details>
     </div>
   </div>
@@ -551,7 +597,7 @@
       <a href="#app">The app</a>
       <a href="#faq">FAQ</a>
       <a href="https://www.linkedin.com/in/david-robertson11/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="#book">Book a call</a>
+      <a href="#book">Book a Free Discovery Call</a>
     </div>
     <div class="copy">© 2008–<span id="yr"></span> David Robertson · The Infinite Body · All rights reserved · <a href="/privacy-policy/" style="border-bottom:1px solid var(--line-dark)">Privacy Policy</a></div>
   </div>
@@ -575,6 +621,169 @@
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
   }, {threshold:.14, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.block .reveal, .finalcta .reveal').forEach(function(el){ io.observe(el); });
+</script>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.131.1/build/three.module.js';
+
+const canvas=document.querySelector('#marbles');
+const stage=document.querySelector('.marble-stage');
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(38,1,.1,100);
+camera.position.set(0,0,12);
+scene.add(new THREE.AmbientLight(0xffffff,.72));
+const keyLight=new THREE.DirectionalLight(0xffe4c5,2.2);keyLight.position.set(-4,6,8);scene.add(keyLight);
+const fillLight=new THREE.PointLight(0xff6500,24,18);fillLight.position.set(3,-2,4);scene.add(fillLight);
+const balls=[];
+const clock=new THREE.Clock();
+const marbleSwirls=[
+  ['#f5223d','#ffd21a'],['#1768ff','#42e3ff'],['#ffd21a','#ff552a'],
+  ['#00c987','#c7ff38'],['#12cbe8','#405dff'],['#f238ad','#ffcf27']
+];
+function magicalMaterial(index){
+  const material=new THREE.MeshBasicMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide});
+  const colors=marbleSwirls[index%marbleSwirls.length];
+  const uniforms={time:{value:0},phase:{value:Math.random()*6.28318},colorMain:{value:new THREE.Color(colors[0])},colorAccent:{value:new THREE.Color(colors[1])}};
+  material.userData.uniforms=uniforms;
+  material.onBeforeCompile=shader=>{
+    material.userData.shader=shader;shader.uniforms={...shader.uniforms,...uniforms};
+    shader.vertexShader='varying vec2 vMarbleUv;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace(/void main\(\) \{/,match=>match+'\n vMarbleUv=uv;\n');
+    shader.fragmentShader='uniform float time; uniform float phase; uniform vec3 colorMain; uniform vec3 colorAccent; varying vec2 vMarbleUv;\n'+shader.fragmentShader;
+    shader.fragmentShader=shader.fragmentShader.replace(/vec4 diffuseColor\s*=\s*vec4\( diffuse, opacity \);/,'float twist=vMarbleUv.x*6.28318*1.12+sin((vMarbleUv.y-.5)*6.2+time*.045+phase)*1.1+phase; float ribbon=1.0-smoothstep(.10,.34,abs(sin(twist))); float filament=1.0-smoothstep(.025,.095,abs(sin(twist+.24))); float innerLine=1.0-smoothstep(.025,.10,abs(sin(twist-.31))); vec3 swirlColor=mix(colorMain,colorAccent,filament*.82); swirlColor=mix(swirlColor,vec3(1.0),innerLine*.42); float alpha=clamp(ribbon*.92+filament*.12,0.0,.96); vec4 diffuseColor=vec4(swirlColor,alpha);');
+  };
+  return material;
+}
+function glassMaterial(){
+  return new THREE.ShaderMaterial({transparent:true,depthWrite:false,vertexShader:'varying vec3 vGlassNormal; varying vec3 vGlassView; void main(){vec4 mvPosition=modelViewMatrix*vec4(position,1.0);vGlassNormal=normalize(normalMatrix*normal);vGlassView=normalize(-mvPosition.xyz);gl_Position=projectionMatrix*mvPosition;}',fragmentShader:'varying vec3 vGlassNormal; varying vec3 vGlassView; void main(){vec3 n=normalize(vGlassNormal);vec3 v=normalize(vGlassView);float rim=pow(1.0-abs(dot(n,v)),2.8);vec3 l=normalize(vec3(-.45,.72,1.0));float glint=pow(max(dot(reflect(-l,n),v),0.0),52.0);float soft=pow(max(dot(n,l),0.0),12.0);float alpha=clamp(.025+rim*.38+glint*.88+soft*.09,0.0,.88);vec3 glassTint=mix(vec3(.76,.91,1.0),vec3(1.0),glint);gl_FragColor=vec4(glassTint,alpha);}' });
+}
+
+let bounds={left:0,right:0,floor:0,top:0};
+let rollingMode=false,settledFor=0,rollDirection=-1,rollStartedAt=0,rollRampDuration=1.6,glideSpeed=0,rollEndsAt=Infinity,finishedFor=0,animationComplete=false,currentViewWidth=0,mobileMode=false,desktopMode=false;
+let stageRect=null,readableRects=[],pixelsPerWorld=1;
+const readableElements=[...document.querySelectorAll('.marble-copy .eyebrow,#marbleTitle,.marble-copy .lede,.marble-copy .hero-cta,.marble-copy .micro')];
+const random=(min,max)=>min+Math.random()*(max-min);
+function refreshReadableRects(){stageRect=stage.getBoundingClientRect();pixelsPerWorld=stageRect.height/Math.max(bounds.top-bounds.floor,1);readableRects=readableElements.map(el=>el.getBoundingClientRect()).filter(rect=>rect.width&&rect.height)}
+function protectReadableArea(body){
+  if(!stageRect||!readableRects.length)return;
+  const radiusPx=body.radius*pixelsPerWorld*1.14,gap=14;
+  for(const rect of readableRects){
+    const x=stageRect.left+stageRect.width/2+body.x*pixelsPerWorld;
+    const y=stageRect.top+(bounds.top-body.y)*pixelsPerWorld;
+    if(x+radiusPx<rect.left-gap||x-radiusPx>rect.right+gap||y+radiusPx<rect.top-gap||y-radiusPx>rect.bottom+gap)continue;
+    const rightX=(rect.right+gap+radiusPx-stageRect.left-stageRect.width/2)/pixelsPerWorld;
+    if(rightX+body.radius<bounds.right){body.x=Math.max(body.x,rightX);if(body.vx<0)body.vx=-body.vx*.55;continue}
+    const belowY=bounds.top-(rect.bottom+gap+radiusPx-stageRect.top)/pixelsPerWorld;
+    if(belowY>=bounds.floor+body.radius){body.y=Math.min(body.y,belowY);if(body.vy>0)body.vy=0;continue}
+    const aboveY=bounds.top-(rect.top-gap-radiusPx-stageRect.top)/pixelsPerWorld;
+    if(aboveY<=bounds.top-body.radius&&aboveY>bounds.floor+body.radius){body.y=Math.max(body.y,aboveY);if(body.vy<0)body.vy=0;continue}
+    body.y=bounds.floor+body.radius;body.vy=0;
+  }
+}
+function fit(){
+  rollingMode=false;settledFor=0;rollDirection=-1;rollStartedAt=0;glideSpeed=0;rollEndsAt=Infinity;finishedFor=0;animationComplete=reducedMotion;
+  const rect=stage.getBoundingClientRect();
+  mobileMode=rect.width<620;
+  desktopMode=rect.width>=920;
+  renderer.setSize(rect.width,rect.height,false);
+  camera.aspect=rect.width/Math.max(rect.height,1);camera.updateProjectionMatrix();
+  const viewHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.position.z;
+  const viewWidth=viewHeight*camera.aspect;
+  currentViewWidth=viewWidth;
+  bounds={left:-viewWidth*.5+viewHeight*.055,right:viewWidth*.5-viewHeight*.055,floor:-viewHeight*.5,top:viewHeight*.5};
+  refreshReadableRects();
+  const count=mobileMode?6+Math.floor(Math.random()*3):rect.width<920?32:48;
+  for(let i=0;i<count;i++){
+    const radius=rect.width<620?random(viewHeight*.035,viewHeight*.045):random(viewHeight*.039,viewHeight*.052);
+    const mesh=new THREE.Group();
+    const core=new THREE.Mesh(new THREE.SphereGeometry(radius*.82,56,40),magicalMaterial(i));
+    const shell=new THREE.Mesh(new THREE.SphereGeometry(radius,56,40),glassMaterial());
+    core.renderOrder=1;shell.renderOrder=2;mesh.add(core,shell);mesh.userData.marbleMaterial=core.material;
+    const minX=bounds.left+radius,maxX=bounds.right-radius;
+    const pileMinX=Math.max(minX,bounds.right-viewHeight*.54);
+    const body={x:random(pileMinX,maxX),y:bounds.top+radius+random(.12,viewHeight*.38),vx:mobileMode?random(-.12,.34):i%5===0?random(-.48,.16):random(.22,.92),vy:mobileMode?random(-.1,.1):random(-.22,.22),radius,mass:radius*radius,angle:random(0,Math.PI*2),spin:mobileMode?random(-.28,.28):random(-.7,.7),spawnAt:i*(mobileMode?random(.28,.42):random(.055,.13)),active:false,onFloor:false,runner:false};
+      if(reducedMotion){const columns=5,row=Math.floor(i/columns),col=i%columns;body.x=Math.max(minX,bounds.right-viewHeight*.08-(columns-1-col)*viewHeight*.084);body.y=bounds.floor+radius+row*viewHeight*.084;body.spawnAt=0;body.vx=0;body.vy=0;body.active=true;protectReadableArea(body)}
+    mesh.position.set(body.x,body.y,0);mesh.userData.body=body;
+    scene.add(mesh);balls.push(mesh);
+  }
+}
+
+function collide(a,b){
+  const dx=b.x-a.x,dy=b.y-a.y,distance=Math.hypot(dx,dy),minimum=a.radius+b.radius;
+  if(distance<=0||distance>=minimum)return;
+  const nx=dx/distance,ny=dy/distance,overlap=Math.max(minimum-distance-.001,0);
+  if(overlap<=0)return;
+  const invA=1/a.mass,invB=1/b.mass,total=invA+invB;
+  const correction=overlap*.78;
+  a.x-=nx*correction*(invA/total);a.y-=ny*correction*(invA/total);
+  b.x+=nx*correction*(invB/total);b.y+=ny*correction*(invB/total);
+  const relative=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+  if(relative<0){const impulse=-(1.22*relative)/total;a.vx-=impulse*invA*nx;a.vy-=impulse*invA*ny;b.vx+=impulse*invB*nx;b.vy+=impulse*invB*ny;
+    const tangentX=-ny,tangentY=nx,slip=(b.vx-a.vx)*tangentX+(b.vy-a.vy)*tangentY,friction=Math.min(Math.abs(slip)*.12,Math.abs(impulse)*.28);const sign=Math.sign(slip);a.vx+=sign*friction*invA*tangentX;a.vy+=sign*friction*invA*tangentY;b.vx-=sign*friction*invB*tangentX;b.vy-=sign*friction*invB*tangentY;
+    a.spin-=impulse*.008;b.spin+=impulse*.008;
+    const maxSpeed=mobileMode?1.05:(currentViewWidth<7?3.2:5.2);
+    for(const body of [a,b]){const speed=Math.hypot(body.vx,body.vy);if(speed>maxSpeed){const scale=maxSpeed/speed;body.vx*=scale;body.vy*=scale}}
+  }
+}
+
+function stepPhysics(dt,elapsed){
+  const substeps=mobileMode?5:4,step=dt/substeps,gravity=mobileMode?2.35:6.5;
+  for(let sub=0;sub<substeps;sub++){
+    balls.forEach(mesh=>{
+      const b=mesh.userData.body;if(elapsed<b.spawnAt)return;b.active=true;
+      if(!reducedMotion){b.vy-=gravity*step;b.x+=b.vx*step;b.y+=b.vy*step;b.spin*=Math.exp(-(rollingMode&&elapsed>=rollEndsAt?1.8:.65)*step);b.angle-=b.vx/b.radius*step;b.angle+=b.spin*step;
+        if(rollingMode&&elapsed>=rollEndsAt){const settleDamping=Math.pow(.32,step*60);b.vx*=settleDamping;b.vy*=settleDamping}
+        if(b.y-b.radius<bounds.floor){b.y=bounds.floor+b.radius;b.onFloor=true;if(Math.abs(b.vy)>.7)b.vy=-b.vy*.16;else b.vy=0;const floorDamping=rollingMode&&desktopMode&&!b.runner ? .35 : !rollingMode ? .88 : (elapsed<rollEndsAt ? .999 : .90);b.vx*=Math.pow(floorDamping,step*60);
+          if(rollingMode&&(!desktopMode||b.runner)&&elapsed<rollEndsAt){const progress=Math.max(0,Math.min(1,(elapsed-rollStartedAt)/rollRampDuration));const targetVx=rollDirection*glideSpeed*progress;const maxChange=(mobileMode ? .45 : 2.4)*step;b.vx+=Math.max(-maxChange,Math.min(maxChange,targetVx-b.vx))}
+          if(Math.abs(b.vx)<.035)b.vx=0;
+        }
+        if(b.x-b.radius<bounds.left){b.x=bounds.left+b.radius;if(rollingMode&&desktopMode&&b.runner){b.vx=0;b.spin=0;b.runner=false}else{b.vx=Math.abs(b.vx)*(rollingMode ? .28 : .68);b.spin=-b.spin*.45;if(rollingMode&&(!desktopMode||b.runner)&&b.y-b.radius<=bounds.floor+b.radius*.04)rollDirection=1}}
+        if(b.x+b.radius>bounds.right){b.x=bounds.right-b.radius;b.vx=-Math.abs(b.vx)*(rollingMode ? .28 : .68);b.spin=-b.spin*.45;if(rollingMode&&(!desktopMode||b.runner)&&b.y-b.radius<=bounds.floor+b.radius*.04)rollDirection=-1}
+      }
+    });
+    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+      const a=balls[i].userData.body,b=balls[j].userData.body;
+      const visibleA=a.y+a.radius>=bounds.floor&&a.y-a.radius<=bounds.top;
+      const visibleB=b.y+b.radius>=bounds.floor&&b.y-b.radius<=bounds.top;
+      if(a.active&&b.active&&visibleA&&visibleB)collide(a,b);
+    }
+    balls.forEach(mesh=>{const b=mesh.userData.body;if(!mobileMode&&b.active&&b.y+b.radius>=bounds.floor&&b.y-b.radius<=bounds.top)protectReadableArea(b)});
+  }
+  let speedTotal=0,activeCount=0;
+  balls.forEach(mesh=>{const b=mesh.userData.body;b.onFloor=b.y-b.radius<=bounds.floor+b.radius*.025;if(b.active){activeCount++;speedTotal+=Math.hypot(b.vx,b.vy)}mesh.position.set(b.x,b.y,0);mesh.rotation.z=b.angle});
+  const averageSpeed=speedTotal/Math.max(activeCount,1);
+  if(!rollingMode&&activeCount===balls.length){settledFor=averageSpeed<.3?settledFor+dt:0;if(settledFor>1.4){rollingMode=true;rollStartedAt=elapsed;rollRampDuration=mobileMode?2.8:1.6;rollEndsAt=elapsed+(mobileMode?7.2:5.4);glideSpeed=mobileMode?Math.max(.38,Math.min(.78,currentViewWidth*.15)):Math.max(1.2,Math.min(3.6,currentViewWidth*.42));finishedFor=0;
+    if(desktopMode){const bodies=balls.map(mesh=>mesh.userData.body);bodies.forEach(body=>body.runner=false);const bottom=bodies.filter(body=>body.y-body.radius<=bounds.floor+body.radius*.22).sort((a,b)=>a.x-b.x);const candidates=bottom.length?bottom:bodies.slice().sort((a,b)=>(a.y-a.radius)-(b.y-b.radius));candidates.slice(0,3).forEach(body=>{body.runner=true})}
+  }}
+  else if(rollingMode&&elapsed>=rollEndsAt){finishedFor=averageSpeed<.12?finishedFor+dt:0;if(finishedFor>.8||elapsed>rollEndsAt+5){animationComplete=true;balls.forEach(mesh=>{const b=mesh.userData.body;b.vx=0;b.vy=0;b.spin=0})}}
+}
+
+function addEnvironment(){
+  const image=document.createElement('canvas');image.width=512;image.height=256;
+  const c=image.getContext('2d'),gradient=c.createLinearGradient(0,0,0,256);gradient.addColorStop(0,'#151821');gradient.addColorStop(.46,'#53463f');gradient.addColorStop(1,'#ffb878');c.fillStyle=gradient;c.fillRect(0,0,512,256);
+  [[38,70,55,7],[180,42,90,9],[345,62,68,6],[445,120,30,34]].forEach(([x,y,w,h])=>{c.shadowColor='#fff1d8';c.shadowBlur=28;c.fillStyle='#fff3dc';c.fillRect(x,y,w,h)});
+  const environment=new THREE.CanvasTexture(image);environment.mapping=THREE.EquirectangularReflectionMapping;scene.environment=environment;
+}
+
+function init(){
+  addEnvironment();
+  fit();
+  let last=clock.getElapsedTime();
+  const loop=()=>{requestAnimationFrame(loop);const elapsed=clock.getElapsedTime(),dt=Math.min(elapsed-last,.033);last=elapsed;
+    if(!reducedMotion&&!animationComplete)stepPhysics(dt,elapsed);
+    refreshReadableRects();
+    balls.forEach(mesh=>{const shader=mesh.userData.marbleMaterial.userData.shader;if(shader&&!animationComplete)shader.uniforms.time.value=reducedMotion?0:elapsed*.05;if(reducedMotion)protectReadableArea(mesh.userData.body)});
+    renderer.render(scene,camera);
+  };
+  window.addEventListener('resize',()=>{balls.splice(0).forEach(mesh=>{scene.remove(mesh);mesh.traverse(child=>{if(child.isMesh){child.geometry.dispose();child.material.dispose()}})});fit()});
+  loop();
+}
+
+init();
 </script>
 </body>
 </html>
