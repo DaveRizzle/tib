@@ -298,7 +298,11 @@
   footer.site img{height:26px}
   footer.site .links{display:flex;gap:24px;align-items:center;font-size:.9rem}
   footer.site .links a:hover{color:#fff}
-  footer.site .copy{font-size:.85rem;color:var(--grey-light);width:100%;border-top:1px solid var(--line-dark);padding-top:20px;margin-top:6px}
+  footer.site .copy{font-size:.85rem;color:var(--grey-light);width:100%;border-top:1px solid var(--line-dark);padding-top:20px;margin-top:6px;display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap}
+  footer.site .legal-copy{flex:1 1 480px}
+  footer.site .partner-credit{display:inline-flex;align-items:center;gap:9px;margin-left:auto;color:var(--grey-light);font-size:.78rem;white-space:nowrap}
+  footer.site .partner-credit:hover{color:#fff}
+  footer.site .partner-credit img{width:auto;height:24px;filter:brightness(0) invert(1)}
 
   /* reveal animations */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -600,7 +604,12 @@
       <a href="https://www.linkedin.com/in/david-robertson11/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#book">Book a Free Discovery Call</a>
     </div>
-    <div class="copy">© 2008–<span id="yr"></span> David Robertson · The Infinite Body · All rights reserved · <a href="/privacy-policy/" style="border-bottom:1px solid var(--line-dark)">Privacy Policy</a></div>
+    <div class="copy">
+      <span class="legal-copy">© 2008–<span id="yr"></span> David Robertson · The Infinite Body · All rights reserved · <a href="/privacy-policy/" style="border-bottom:1px solid var(--line-dark)">Privacy Policy</a></span>
+      <a class="partner-credit" href="https://watsongym.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Powered by Watson Gym Equipment">
+        <span>Powered by</span><img src="assets/watson-logo-blue.png" alt="Watson Gym Equipment">
+      </a>
+    </div>
   </div>
 </footer>
 
