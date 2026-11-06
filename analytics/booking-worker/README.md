@@ -96,4 +96,7 @@ secret. Google's deployed DEBUG validation returned valid=true with zero message
 and no production events. Numeric-format anonymous client IDs are used; legacy UUID
 records are deterministically normalised if needed. SEND_EVENTS=true enables
 production submission for future eligible bookings. Existing baseline tests remain
-excluded. See ../AGENTS.md for the latest deployment and scheduler verification.
+excluded. Actual unattended execution succeeded at 14:15:38 UTC on 6 November
+(16:15 Johannesburg), with delivery enabled and no errors. No eligible new real
+booking has yet been sent, so eventual GA4 event receipt is still to be observed.
+Six Node tests pass. See ../AGENTS.md for the dated verification record.

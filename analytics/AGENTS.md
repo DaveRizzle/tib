@@ -281,3 +281,40 @@ No fake production event was recorded to test the integration.
 SEND_EVENTS=true is now prepared in source for final deployment. Activation and
 actual unattended execution still require a live status check; do not infer them
 from this source change. The separate stream remains unlinked to website sessions.
+
+## Production delivery enabled — 6 November 2026
+
+Final activation deployment: aeab704f-c566-4079-ab3f-ffe63888fca0 with
+SEND_EVENTS=true. Live protected status confirmed sending_enabled=true. The enabled
+Worker then completed a verification sync at 14:11:01 UTC (16:11 Johannesburg):
+valid cursor, verified schedule marker, no errors, no deliveries needing review,
+and the same three excluded test entries. No production appointment event was
+queued or submitted because there were no eligible new bookings.
+
+An unauthenticated live /status request returned HTTP 404. Cloudflare's schedule
+API reconfirmed the unchanged */5 cron, originally registered 14:05:54 UTC. Actual
+unattended execution is still being observed separately; these checks must not be
+represented as evidence that GA4 has received a real appointment conversion.
+
+## Unattended cron verified — 6 November 2026
+
+Protected status at 14:16:34 UTC showed last_attempt=14:15:37.691Z and
+last_success=14:15:38.401Z, with sending_enabled=true, sync_ready=true,
+marker_health=verified, no last_error and zero deliveries needing review. No manual
+/run request was made after the direct verification at 14:11, so this new timestamp
+verifies actual unattended execution of the registered */5 Cron Trigger. This
+supersedes the earlier pending-scheduler notes: the automatic integration is enabled
+and has run successfully on its schedule (16:15 Johannesburg).
+
+The same 2 cancelled and 1 confirmed baseline test entries remain excluded. There
+were no eligible new bookings and no queued/submitted production conversion events.
+Google DEBUG payload validation passed, but eventual GA4 receipt of a genuine new
+booking remains to be observed; do not claim that has happened. Names, email
+addresses, titles, notes and Calendar event IDs are not sent in the GA4 payload.
+
+The temporary bulk-secrets JSON file was removed after encrypted installation.
+The original ignored service-account key and ignored .admin-token remain locally;
+use booking-worker/manage.py for future status checks. The website Pages deployment
+was not changed by this Worker activation. Google acknowledgement is no longer a
+blocker. The remaining limitations are unlinked website/ad attribution, undocumented
+schedule markers, replacement-ID reschedules, and reviewing uncertain/expired sends.
