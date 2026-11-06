@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "tib-booking-conversions",
+  "account_id": "09dfe272fc0ceb9c2a545b1f624c9c0b",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "BOOKINGS",
+        "class_name": "BookingTracker"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "BookingTracker"
+      ]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "SEND_EVENTS": "true"
+  },
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  }
+}
