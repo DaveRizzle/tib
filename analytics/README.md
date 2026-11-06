@@ -1,5 +1,7 @@
 # GA4 diagnostics
 
+See [AGENTS.md](AGENTS.md) for the dated audit baseline, deployment history and remaining work.
+
 Production property: `562594130` (`tib_ads_1`), account `414911292`,
 web stream `16279643437`, measurement ID `G-GMZT51K1VM`.
 Account IDs and property IDs are different.
@@ -35,11 +37,12 @@ events and must not be summed as unique bookings.
 
 On 6 November 2026, `booking_click` was configured remotely as a GA4 key event,
 counted once per session. Event-data retention was extended to 14 months.
-After deployment, validate `booking_click` in Realtime/DebugView as a booking-intent signal. It is NOT an appointment confirmation.
-A future `appointment_booked` key event must come from a verified booking confirmation
-integration. Do not create it from booking-link clicks or generic form submissions.
+The homepage was deployed on 6 November 2026 via PR #12. Live HTML was verified;
+browser-to-GA4 receipt of `booking_click` still needs validation in Realtime/DebugView. It is NOT an appointment confirmation.
+The [booking Worker](booking-worker/README.md) now implements a separate Calendar
+booking register; see its setup status before assuming GA4 delivery is enabled. Do not create it from booking-link clicks or generic form submissions.
 
 Editor access and both remote settings were verified by API readback.
-Pending work: deploy and validate the homepage event, standardise tags on CMS-managed
-pages through the CMS/re-scrape workflow, and choose an actual booking-confirmation integration. Ads linking requires
+Pending work: validate browser event receipt, standardise tags on CMS-managed
+pages through the CMS/re-scrape workflow, and finish/validate the booking Worker activation. Ads linking requires
 the relevant Google Ads account access. No remote settings are changed by these scripts.

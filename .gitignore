@@ -7,3 +7,7 @@ tib-market-intel-95b303aac178.json
 # Python caches and local environments
 __pycache__/
 .venv/
+
+# Booking Worker local credentials
+analytics/booking-worker/.admin-token
+analytics/booking-worker/.dev.vars*
