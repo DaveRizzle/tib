@@ -90,9 +90,10 @@ removing the cron pauses collection. Never clear storage to fix an expired curso
 
 The initial deployed Cloudflare sync succeeded and verified the schedule marker:
 2 cancelled tests and 1 confirmed test were excluded, with zero queued deliveries.
-Google created the dedicated stream and booking key event, but blocked API-secret
-creation pending the property owner's User Data Collection Acknowledgement. The
-Worker is configured with SEND_EVENTS=false until that acknowledgement is completed,
-the API secret is installed, and the payload passes the Google validation endpoint.
-The recurring schedule can collect bookings in the meantime; no GA4 delivery is
-claimed while paused. See ../AGENTS.md for the dated project history.
+The owner accepted Google's User Data Collection Acknowledgement. The stream's
+Measurement Protocol API secret was created and installed as an encrypted Worker
+secret. Google's deployed DEBUG validation returned valid=true with zero messages
+and no production events. Numeric-format anonymous client IDs are used; legacy UUID
+records are deterministically normalised if needed. SEND_EVENTS=true enables
+production submission for future eligible bookings. Existing baseline tests remain
+excluded. See ../AGENTS.md for the latest deployment and scheduler verification.

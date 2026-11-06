@@ -262,3 +262,22 @@ Validation: five Node tests passed against real in-memory SQLite for exact sched
 matching, exclusion/deduplication, cancellations, delivery ambiguity, pagination,
 cursor reset, marker failure, payload privacy and unauthenticated denial. Python
 management helper parsed and git diff checks passed. See booking-worker/README.md.
+
+## Google acknowledgement completed and activation prepared — 6 November 2026
+
+The user accepted the required acknowledgement in GA4. API-secret creation then
+succeeded and GA4_API_SECRET was installed as an encrypted Worker secret. This
+supersedes the prior Google acknowledgement blocker. The stream and fixed tracking
+cutoff were preserved; the known test bookings remain excluded.
+
+Google's DEBUG validation first rejected UUID-format client_id. The implementation
+was corrected to use anonymous numeric <number>.<number> IDs, with deterministic
+normalisation for legacy UUID rows. Six Node/SQLite tests now pass, including the
+legacy-ID conversion case. The corrected paused Worker was deployed as version
+9a4e0af4-f16f-4bf8-9362-e9eb0df712d4. Its /validate request returned HTTP 200,
+valid=true, validationMessages=[], production_events_sent=0 at about 14:10 UTC.
+No fake production event was recorded to test the integration.
+
+SEND_EVENTS=true is now prepared in source for final deployment. Activation and
+actual unattended execution still require a live status check; do not infer them
+from this source change. The separate stream remains unlinked to website sessions.

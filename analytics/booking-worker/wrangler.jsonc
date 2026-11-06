@@ -25,7 +25,7 @@
     "enabled": true
   },
   "vars": {
-    "SEND_EVENTS": "false"
+    "SEND_EVENTS": "true"
   },
   "triggers": {
     "crons": [

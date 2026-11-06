@@ -88,11 +88,19 @@ test('cursor expiry and pagination preserve exclusions and deduplication; missin
   } finally { globalThis.fetch = fetchBefore; }
 });
 test('GA4 payload has no attendee details or claimed website session; public endpoints require auth', async () => {
-  const payload = conversionPayload({ client_id:'opaque-random',event_key:'hashed-id' },'appointment_booked',Date.now());
+  const payload = conversionPayload({ client_id:'12345.67890',event_key:'hashed-id' },'appointment_booked',Date.now());
   assert.equal(payload.events[0].params.attribution_status,'unlinked');
   assert.equal(payload.events[0].params.session_id,undefined);
   assert.equal(payload.user_id,undefined);
   assert.equal(payload.events[0].params.page_location,undefined);
   const response = await worker.fetch(new Request('https://test/status'),{ADMIN_TOKEN:'secret'});
   assert.equal(response.status,404);
+});
+
+test('legacy UUIDs produce stable numeric client IDs accepted by the validation format', () => {
+  const row = {client_id:'7397f9cf-27be-449d-9442-46575dc5a447',event_key:'hashed-id'};
+  const first = conversionPayload(row,'appointment_booked',Date.now());
+  const second = conversionPayload(row,'appointment_cancelled',Date.now());
+  assert.match(first.client_id, /^\d+\.\d+$/);
+  assert.equal(first.client_id,second.client_id);
 });

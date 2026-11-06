@@ -1,4 +1,4 @@
-import { hash, matchesSchedule, transition, conversionPayload } from './core.mjs';
+import { hash, matchesSchedule, transition, conversionPayload, newClientId } from './core.mjs';
 
 const CALENDAR_FIELDS = 'items(id,status,eventType,created,updated,organizer(email),extendedProperties),nextPageToken,nextSyncToken';
 const encoder = new TextEncoder();
@@ -56,7 +56,7 @@ export class BookingTracker {
     this.ctx.storage.transactionSync(() => {
       this.sql.exec(`INSERT INTO bookings(event_key,client_id,status,excluded,created,updated) VALUES(?,?,?,?,?,?)
         ON CONFLICT(event_key) DO UPDATE SET status=excluded.status,updated=excluded.updated`,
-      eventKey, previous?.client_id || crypto.randomUUID(), event.status, Number(change.excluded), event.created || null, event.updated || null);
+      eventKey, previous?.client_id || newClientId(), event.status, Number(change.excluded), event.created || null, event.updated || null);
       if (change.action) {
         const time = change.action === 'appointment_booked' ? Date.parse(event.created) : (Date.parse(event.updated) || Date.now());
         if (Number.isFinite(time)) this.sql.exec('INSERT OR IGNORE INTO deliveries(event_key,event_name,occurred_ms) VALUES(?,?,?)', eventKey, change.action, time);
@@ -141,7 +141,7 @@ export class BookingTracker {
     if (request.method === 'GET' && path === '/status') return json(this.status());
     if (request.method === 'POST' && path === '/run') return this.run();
     if (request.method === 'POST' && path === '/validate') {
-      const payload = conversionPayload({ client_id: crypto.randomUUID(), event_key: 'validation-only' }, 'appointment_booked', Date.now());
+      const payload = conversionPayload({ client_id: newClientId(), event_key: 'validation-only' }, 'appointment_booked', Date.now());
       payload.validation_behavior = 'ENFORCE_RECOMMENDATIONS';
       const response = await http(gaUrl(this.env, true), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       if (!response.ok) return json({ valid: false, status: response.status }, 502);
