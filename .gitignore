@@ -1,2 +1,8 @@
 # wrangler deploy state (Cloudflare Pages CLI)
 .wrangler/
+
+# Google Cloud service account keys
+tib-market-intel-95b303aac178.json
+
+# Analytics files
+analytics/
