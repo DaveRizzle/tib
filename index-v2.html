@@ -8,7 +8,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-GMZT51K1VM');
+
+  // Keep preview and local visits out of production Analytics.
+  var productionAnalytics = ['theinfinitebody.com', 'www.theinfinitebody.com'].includes(location.hostname);
+  if (productionAnalytics) gtag('config', 'G-GMZT51K1VM');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/favicon-tib-180.png">
@@ -622,6 +625,15 @@
 </footer>
 
 <script>
+  // Measures opening the booking page; this does not confirm an appointment.
+  document.querySelectorAll('a[href="https://calendar.app.google/ZyW4qWin1iDgaxhX6"]').forEach(function(link){
+    link.addEventListener('click', function(){
+      if (productionAnalytics) gtag('event', 'booking_click', {
+        booking_provider: 'google_calendar',
+        transport_type: 'beacon'
+      });
+    });
+  });
   // year
   document.getElementById('yr').textContent = new Date().getFullYear();
   // header shadow on scroll
