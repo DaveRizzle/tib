@@ -4,5 +4,6 @@
 # Google Cloud service account keys
 tib-market-intel-95b303aac178.json
 
-# Analytics files
-analytics/
+# Python caches and local environments
+__pycache__/
+.venv/
