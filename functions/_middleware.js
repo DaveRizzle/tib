@@ -1,6 +1,5 @@
 const legacyHtmlRoutes = [
   /^\/work-with-me\/?$/,
-  /^\/privacy-policy\/?$/,
   /^\/404_not_found\/?$/,
   /^\/author\/davidr\/?$/
 ];
