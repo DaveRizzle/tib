@@ -2,17 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMZT51K1VM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  // Keep preview and local visits out of production Analytics.
-  var productionAnalytics = ['theinfinitebody.com', 'www.theinfinitebody.com'].includes(location.hostname);
-  if (productionAnalytics) gtag('config', 'G-GMZT51K1VM');
-</script>
+<link rel="stylesheet" href="assets/tib-consent.css">
+<script defer src="assets/tib-consent.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/favicon-tib-180.png">
 <title>The Infinite Body | Online Strength Coaching</title>
@@ -616,7 +607,7 @@
       <a href="#book">Book a Free Discovery Call</a>
     </div>
     <div class="copy">
-      <span class="legal-copy">© 2008–<span id="yr"></span> David Robertson · The Infinite Body · All rights reserved · <a href="/privacy-policy/" style="border-bottom:1px solid var(--line-dark)">Privacy Policy</a></span>
+      <span class="legal-copy">© 2008–<span id="yr"></span> David Robertson · The Infinite Body · All rights reserved · <a href="/privacy-policy/" style="border-bottom:1px solid var(--line-dark)">Privacy Policy</a> · <a class="tib-consent-settings" href="#tib-cookie-settings">Cookie settings</a></span>
       <a class="partner-credit" href="https://watsongym.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Powered by Watson Gym Equipment">
         <span>Powered by</span><img src="assets/watson-logo-blue.png" alt="Watson Gym Equipment">
       </a>
@@ -625,15 +616,6 @@
 </footer>
 
 <script>
-  // Measures opening the booking page; this does not confirm an appointment.
-  document.querySelectorAll('a[href="https://calendar.app.google/ZyW4qWin1iDgaxhX6"]').forEach(function(link){
-    link.addEventListener('click', function(){
-      if (productionAnalytics) gtag('event', 'booking_click', {
-        booking_provider: 'google_calendar',
-        transport_type: 'beacon'
-      });
-    });
-  });
   // year
   document.getElementById('yr').textContent = new Date().getFullYear();
   // header shadow on scroll

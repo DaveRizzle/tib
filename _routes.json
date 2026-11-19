@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/work-with-me/*",
+    "/privacy-policy/*",
+    "/404_not_found/*",
+    "/author/davidr/*"
+  ],
+  "exclude": []
+}
