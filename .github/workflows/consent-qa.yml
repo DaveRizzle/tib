@@ -1,0 +1,54 @@
+name: Cookie consent QA
+
+on:
+  pull_request:
+    paths:
+      - "index-v2.html"
+      - "assets/tib-consent.js"
+      - "assets/tib-consent.css"
+      - "functions/**"
+      - "_routes.json"
+      - "privacy-policy/**"
+      - "work-with-me/**"
+      - "404_not_found/**"
+      - "author/**"
+      - ".github/workflows/consent-qa.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install -r qa/requirements.txt
+          google-chrome --version
+      - name: Assemble Pages preview root
+        run: |
+          mkdir -p /tmp/tib-pages-preview
+          cp index-v2.html /tmp/tib-pages-preview/index.html
+          cp -R assets functions privacy-policy work-with-me 404_not_found author /tmp/tib-pages-preview/
+          cp _routes.json /tmp/tib-pages-preview/
+      - name: Start local Pages runtime
+        run: |
+          npx --yes wrangler@latest pages dev /tmp/tib-pages-preview --ip 127.0.0.1 --port 8788 --compatibility-date=2026-11-19 > /tmp/tib-wrangler.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            curl --fail --silent http://127.0.0.1:8788/ > /dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/tib-wrangler.log
+          exit 1
+      - name: Run consent browser QA
+        env:
+          TIB_PREVIEW_URL: http://127.0.0.1:8788
+          TIB_BROWSER_EXECUTABLE: /usr/bin/google-chrome
+        run: python qa/test_cookie_consent.py

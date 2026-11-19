@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "include": [
+    "/work-with-me/*",
+    "/404_not_found/*",
+    "/author/davidr/*"
+  ],
+  "exclude": []
+}

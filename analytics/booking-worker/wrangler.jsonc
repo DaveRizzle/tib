@@ -25,7 +25,9 @@
     "enabled": true
   },
   "vars": {
-    "SEND_EVENTS": "true"
+    // Keep server-side GA4 appointment exports paused until their processing
+    // basis is separately approved. Calendar sync and the booking register stay live.
+    "SEND_EVENTS": "false"
   },
   "triggers": {
     "crons": [
