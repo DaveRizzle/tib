@@ -20,7 +20,8 @@ def consent_cookie(context):
 
 def test_consent_matrix():
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True)
+        executable = os.environ.get("TIB_BROWSER_EXECUTABLE")
+        browser = playwright.chromium.launch(headless=True, executable_path=executable)
 
         context = browser.new_context(viewport={"width": 1440, "height": 900})
         page = context.new_page()
