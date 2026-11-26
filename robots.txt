@@ -1,0 +1,7 @@
+# Site-specific search crawler directives.
+# Cloudflare prepends its managed AI crawler protections to this response.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.theinfinitebody.com/sitemap.xml
