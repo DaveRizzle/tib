@@ -1,0 +1,45 @@
+{
+  "kind": "Full article listening adaptation",
+  "source_article": "blog/plan-your-strength-training-week/index.html",
+  "source_article_sha256": "3b95076b41a9a74e4648b9160319198229e27ba1de3bea548315251809fc4dd4",
+  "script_sha256": "0362d017a2e83bc858c0709d0fca6113c77943b1b94b2bc766c442d3e261479e",
+  "script_words": 1427,
+  "model_id": "phonon-31m-en",
+  "voice": "Trevor",
+  "export_rate": 1,
+  "sample_listening_review": "Accepted by David in this conversation",
+  "adaptations": [
+    "Title, author, introduction and all main article sections included",
+    "Two tables replaced with spoken descriptions",
+    "Numbers expanded for speech",
+    "Final link instructions adapted for listening",
+    "Summary card, navigation, dates, URLs, HTML and footer excluded"
+  ],
+  "generation": {
+    "job_id": "34B2380A-0A36-42B7-858D-682C5E447681",
+    "state": "completed",
+    "duration_seconds": 508.212,
+    "cleaned_input_matches_script": true
+  },
+  "export": "WAV exported by David; 508.212 seconds, mono 24 kHz, matching generation receipt",
+  "transcription_verification": "Completed; no page metadata detected; recognition ambiguity at 5:44 reviewed and accepted by David",
+  "mp3": {
+    "path": "assets/audio/plan-your-strength-training-week.mp3",
+    "size_bytes": 6099596,
+    "duration_seconds": 508.212,
+    "codec": "MP3",
+    "bitrate_kbps": 96,
+    "channels": 1
+  },
+  "player_patch": "Applied to article, directly below Article Summary",
+  "local_preview": "http://127.0.0.1:8000/blog/plan-your-strength-training-week/",
+  "publication_status": "Local only; not committed, pushed or deployed",
+  "player_settings": {
+    "preload": "metadata",
+    "autoplay": false,
+    "visible_description": "8 min 28 sec",
+    "source_cache_version": "v=1"
+  },
+  "full_listening_review": "Approved by David, including the flagged passage near 5:44",
+  "player_review": "Approved by David after removing the explanatory text and fixing local seeking"
+}

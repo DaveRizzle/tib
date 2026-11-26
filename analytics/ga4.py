@@ -11,6 +11,9 @@ from google.oauth2 import service_account
 
 PROPERTY_ID = '562594130'
 MEASUREMENT_ID = 'G-GMZT51K1VM'
+WEBSITE_STREAM_ID = '16279643437'
+PRODUCTION_HOSTS = ('theinfinitebody.com', 'www.theinfinitebody.com')
+REPORTING_EXCLUDED_COUNTRY = 'South Africa'
 KEY_FILE = Path(__file__).resolve().parent.parent / 'tib-market-intel-95b303aac178.json'
 
 
@@ -33,12 +36,53 @@ class GA4:
         return response.json()
 
     def report(self, start='30daysAgo', end='yesterday', dimensions=(),
-               metrics=('eventCount', 'totalUsers', 'keyEvents')):
-        return self.request(self.property + ':runReport', {
+               metrics=('eventCount', 'totalUsers', 'keyEvents'),
+               dimension_filter=None):
+        body = {
             'dateRanges': [{'startDate': start, 'endDate': end}],
             'dimensions': [{'name': name} for name in dimensions],
             'metrics': [{'name': name} for name in metrics],
-        }, data=True)
+        }
+        if dimension_filter:
+            body['dimensionFilter'] = dimension_filter
+        return self.request(self.property + ':runReport', body, data=True)
+
+    def production_filter(self):
+        """Website stream + production hosts, excluding South Africa for reporting."""
+        return {'andGroup': {'expressions': [
+            {'filter': {'fieldName': 'streamId', 'stringFilter': {
+                'matchType': 'EXACT', 'value': WEBSITE_STREAM_ID}}},
+            {'orGroup': {'expressions': [
+                {'filter': {'fieldName': 'hostName', 'stringFilter': {
+                    'matchType': 'EXACT', 'value': host}}}
+                for host in PRODUCTION_HOSTS
+            ]}},
+            {'notExpression': {'filter': {
+                'fieldName': 'country', 'stringFilter': {
+                    'matchType': 'EXACT', 'value': REPORTING_EXCLUDED_COUNTRY,
+                    'caseSensitive': False}}}},
+        ]}}
+
+    def performance(self):
+        reporting_filter = self.production_filter()
+        return {
+            'policy': {
+                'streamId': WEBSITE_STREAM_ID,
+                'productionHosts': list(PRODUCTION_HOSTS),
+                'excludedCountry': REPORTING_EXCLUDED_COUNTRY,
+                'exclusionIsReportingOnly': True,
+                'dateRange': ['30daysAgo', 'yesterday'],
+            },
+            'summary': self.report(metrics=(
+                'totalUsers', 'newUsers', 'sessions', 'engagedSessions',
+                'screenPageViews', 'keyEvents'), dimension_filter=reporting_filter),
+            'events': self.report(dimensions=('eventName',),
+                                  dimension_filter=reporting_filter),
+            'daily': self.report(dimensions=('date',), metrics=(
+                'totalUsers', 'sessions', 'engagedSessions',
+                'screenPageViews', 'keyEvents'),
+                dimension_filter=reporting_filter),
+        }
 
     def audit(self):
         prop = self.request(self.property)
@@ -68,12 +112,14 @@ class GA4:
 def main(default='audit'):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', nargs='?', default=default,
-                        choices=['audit', 'today', 'events', 'realtime'])
+                        choices=['audit', 'performance', 'today', 'events', 'realtime'])
     args = parser.parse_args()
     try:
         client = GA4()
         if args.command == 'audit':
             result = client.audit()
+        elif args.command == 'performance':
+            result = client.performance()
         elif args.command == 'today':
             result = client.report('today', 'today', metrics=(
                 'activeUsers', 'sessions', 'screenPageViews'))

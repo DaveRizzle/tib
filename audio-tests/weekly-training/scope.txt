@@ -1,0 +1,24 @@
+ARTICLE AUDIO PROOF OF CONCEPT
+
+Generated sample: How to Plan Your Strength Training Week.
+Engine: Say It 0.2.7, Phonon 31M English, Trevor preset voice.
+Length: 1 minute 58 seconds. Sample only, not the full article.
+
+Narration uses a prepared listening script. It does not read the HTML page,
+structured data, navigation, dates, table headers or cells. Both tables are
+explained in full sentences, including the four-day schedule and the ten-of-twelve
+attendance example. The model received exactly this cleaned script.
+
+Completed: exported WAV inspected, locally transcribed and compared with the
+script, and converted to a mono 96 kbps MP3. The transcript contains no page
+metadata or raw table rows. See verification-report.json for recognition differences.
+Still to review by ear: voice quality, pronunciation, pacing and unwanted speech.
+
+After the sample is accepted: adapt the full article for listening, preserve the
+fictional-example and practical-review boundaries, then generate and verify the
+full narration. Put a native audio player immediately below Article Summary,
+with an explicit play control, no autoplay and preload set to none. Include
+an audio-version label and explain that tables are described aloud. Keep the
+written article available. Serve a static MP3; no live speech-generation API.
+
+No article HTML, release package or production deployment has been changed.

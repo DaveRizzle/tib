@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tib-canonical-redirect",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-13",
+  "account_id": "09dfe272fc0ceb9c2a545b1f624c9c0b",
+  "routes": [
+    {
+      "pattern": "theinfinitebody.com/*",
+      "zone_name": "theinfinitebody.com"
+    }
+  ]
+}

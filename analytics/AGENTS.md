@@ -318,3 +318,33 @@ use booking-worker/manage.py for future status checks. The website Pages deploym
 was not changed by this Worker activation. Google acknowledgement is no longer a
 blocker. The remaining limitations are unlinked website/ad attribution, undocumented
 schedule markers, replacement-ID reschedules, and reviewing uncertain/expired sends.
+
+## SEO conversion-measurement validation — 13 November 2026
+
+Task 8 of the SEO scope was revalidated against live systems. The booking Worker was
+healthy at the check: sending_enabled=true, sync_ready=true, marker_health=verified,
+no last_error and zero deliveries needing review. Its latest completed scheduled sync
+was 2026-11-13T14:10:39.056Z. The register contained three cancelled excluded test
+bookings and no delivery records. Google's DEBUG endpoint returned valid=true with no
+validation messages and production_events_sent=0. All six Node/SQLite Worker tests
+passed, including schedule matching, exclusion/deduplication, ambiguous delivery,
+privacy and numeric client-ID behaviour.
+
+The dedicated Calendar stream still returned no processed event rows from the tracking
+cutoff through the check. Therefore no `appointment_booked` receipt has yet been
+observed. Do not manufacture a booking to complete the test or claim confirmed event
+delivery before the first eligible real booking occurs.
+
+Added `python3 analytics/ga4.py performance` as the standard SEO decision-making view.
+It uses read-only API access and filters to website stream 16279643437, both production
+hostnames, and excludes South Africa at report time. Raw South African data remains in
+GA4. The filter also excludes the Calendar stream's anonymous server-side users from
+website totals. For the 30 days through 12 November, this view returned 12 users, 13
+sessions, 2 engaged sessions, 13 page views and zero key events. The two historical
+`booking_click` key events disappear under the South Africa reporting exclusion,
+consistent with them being tests rather than evidence of customer conversion.
+
+Measurement semantics remain: page views are engagement only; `booking_click` is a
+secondary intent event; `appointment_booked` is a confirmed Calendar booking but has no
+website-session/ad attribution. A qualified attended sales conversation and a retained
+paying client remain downstream business outcomes outside GA4's current automation.

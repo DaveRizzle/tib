@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>The Infinite Body — Lost your training marbles?</title>
+<style>
+  :root{--ink:#101114;--paper:#f5f2eb;--orange:#ff6500;--orange2:#ff9a4d;--muted:#aaa8a4}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .site-header{position:relative;isolation:isolate;min-height:690px;overflow:hidden;background:radial-gradient(ellipse at 81% 48%,rgba(255,101,0,.105),transparent 42%),linear-gradient(115deg,#111216 0%,#17171a 65%,#111114 100%)}
+  .site-header:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,#000,transparent 85%)}
+  nav{height:82px;max-width:1180px;margin:auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.015em}.mark{width:35px;height:35px;border:2px solid var(--orange);border-radius:50%;display:grid;place-items:center;color:var(--orange);font-size:10px;letter-spacing:-.08em;box-shadow:0 0 18px #ff650044,inset 0 0 10px #ff650022}
+  .navlinks{display:flex;align-items:center;gap:30px;color:#cbc8c2;font-size:13px}.navlinks a{color:inherit;text-decoration:none}.navlinks .pill{border:1px solid #ff8d48;border-radius:999px;padding:11px 18px;color:white}
+  .hero{max-width:1180px;min-height:608px;margin:auto;padding:70px 32px 88px;display:grid;grid-template-columns:.94fr 1.06fr;align-items:center;position:relative}
+  .copy{position:relative;z-index:1;max-width:550px;padding-bottom:12px}.eyebrow{color:var(--orange2);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:22px;height:1px;background:var(--orange)}
+  h1{font-size:clamp(50px,6.2vw,82px);letter-spacing:-.075em;line-height:.99;margin:23px 0 22px;font-weight:780}h1 span{color:var(--orange);text-shadow:0 0 30px #ff650034}
+  .lede{max-width:435px;color:#b7b4ae;font-size:17px;line-height:1.7;margin:0 0 30px}.cta{display:inline-flex;align-items:center;gap:13px;background:var(--orange);color:#17120e;text-decoration:none;border-radius:6px;padding:15px 19px;font-size:14px;font-weight:800;box-shadow:0 8px 30px #ff650033}.cta i{font-style:normal;font-size:19px}.subnote{display:block;color:#85827e;font-size:11px;margin-top:14px}
+  .marble-stage{position:absolute;inset:0 0 0 43%;overflow:hidden;pointer-events:none;mask-image:linear-gradient(90deg,transparent 0%,#000 16%,#000 100%)}
+  #marbles{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+  .stage-glow{position:absolute;right:-7%;bottom:-35%;width:74%;height:85%;border-radius:50%;background:radial-gradient(ellipse,#ff650019,transparent 68%);filter:blur(16px)}
+  .scroll{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);color:#74716d;text-transform:uppercase;letter-spacing:.2em;font-size:9px;display:flex;align-items:center;gap:10px}.scroll:after{content:"";height:28px;width:1px;background:linear-gradient(var(--orange),transparent);position:absolute;top:20px;left:50%}
+  @media(max-width:760px){.site-header{min-height:760px}.hero{display:block;min-height:678px;padding:65px 24px 250px}.copy{max-width:540px}h1{font-size:clamp(51px,12vw,76px)}.marble-stage{inset:40% 0 0 7%;mask-image:linear-gradient(180deg,transparent,#000 25%)}nav{padding:0 24px}.navlinks a:not(.pill){display:none}.navlinks{gap:0}.lede{font-size:15px;max-width:370px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav aria-label="Main navigation">
+    <div class="brand"><span class="mark">TIB</span><span>THE INFINITE BODY</span></div>
+    <div class="navlinks"><a href="#method">The method</a><a href="#app">The app</a><a class="pill" href="#start">Find your focus&nbsp; ↗</a></div>
+  </nav>
+  <main class="hero">
+    <div class="copy">
+      <div class="eyebrow">Strength training, with a little more magic</div>
+      <h1>Lost your<br>training <span>marbles?</span></h1>
+      <p class="lede">Too many plans. Too much advice. Let’s gather the pieces, find your focus, and make every session count.</p>
+      <a class="cta" href="#start">Find your training focus <i>→</i></a>
+      <small class="subnote">A clear plan, expert coaching, and an app that keeps it all together.</small>
+    </div>
+    <div class="marble-stage" aria-hidden="true">
+      <div class="stage-glow"></div>
+      <canvas id="marbles"></canvas>
+    </div>
+  </main>
+  <div class="scroll">A clearer way forward</div>
+</header>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.131.1/build/three.module.js';
+
+const canvas=document.querySelector('#marbles');
+const stage=document.querySelector('.marble-stage');
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(38,1,.1,100);
+camera.position.set(0,0,12);
+scene.add(new THREE.AmbientLight(0xffffff,.72));
+const keyLight=new THREE.DirectionalLight(0xffe4c5,2.2);keyLight.position.set(-4,6,8);scene.add(keyLight);
+const fillLight=new THREE.PointLight(0xff6500,24,18);fillLight.position.set(3,-2,4);scene.add(fillLight);
+const balls=[];
+const palette=['#ff6500','#ff8b34','#ffbd76','#f5eee3','#e6d8c6','#d85c25','#ff9e45','#f0e6da','#ff7422','#e99a55'];
+const heightURL='https://i.imgur.com/oYS135g.jpeg';
+const displacementURL='https://i.imgur.com/L1pqRg9.jpeg';
+const clock=new THREE.Clock();
+let heightMap=makeFallbackTexture('height'),displacementMap=makeFallbackTexture('displacement');
+
+function makeFallbackTexture(kind){
+  const size=128,data=new Uint8Array(size*size*4);
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+    const i=(y*size+x)*4;
+    const wave=Math.sin(x*.11+Math.sin(y*.07)*2)*Math.cos(y*.12+x*.035);
+    const noise=(Math.random()-.5)*.22;
+    const value=Math.max(0,Math.min(255,128+wave*(kind==='height'?88:48)+noise*255));
+    data[i]=kind==='displacement'?value: value;data[i+1]=kind==='displacement'?Math.max(0,Math.min(255,128+Math.cos(x*.09-y*.1)*50)):value;data[i+2]=kind==='displacement'?Math.max(0,Math.min(255,128+Math.sin(x*.1+y*.08)*50)):value;data[i+3]=255;
+  }
+  const texture=new THREE.DataTexture(data,size,size,THREE.RGBAFormat);texture.wrapS=texture.wrapT=kind==='displacement'?THREE.RepeatWrapping:THREE.ClampToEdgeWrapping;texture.minFilter=THREE.NearestFilter;texture.magFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
+}
+function loadTexture(url,kind){new THREE.TextureLoader().load(url,t=>{t.wrapS=t.wrapT=kind==='displacement'?THREE.RepeatWrapping:THREE.ClampToEdgeWrapping;t.minFilter=THREE.NearestFilter;if(kind==='height')heightMap=t;else displacementMap=t;balls.forEach(mesh=>{const uniforms=mesh.material.userData.uniforms;uniforms.heightMap.value=heightMap;uniforms.displacementMap.value=displacementMap})},undefined,()=>{})}
+
+function magicalMaterial(colorB){
+  const material=new THREE.MeshStandardMaterial({roughness:.1,metalness:.04});
+  const uniforms={iterations:{value:40},depth:{value:.64},smoothing:{value:.19},colorA:{value:new THREE.Color('#190d1d')},colorB:{value:new THREE.Color(colorB)},heightMap:{value:heightMap},displacementMap:{value:displacementMap},displacement:{value:.12},time:{value:0}};
+  material.userData.uniforms=uniforms;
+  material.onBeforeCompile=shader=>{
+    material.userData.shader=shader;
+    shader.uniforms={...shader.uniforms,...uniforms};
+    shader.vertexShader=`varying vec3 v_pos; varying vec3 v_dir;\n`+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace(/void main\(\) \{/,match=>match+`\n v_dir=position-cameraPosition; v_pos=position;\n`);
+    shader.fragmentShader=`
+      #define FLIP vec2(1.,-1.)
+      uniform vec3 colorA; uniform vec3 colorB; uniform sampler2D heightMap; uniform sampler2D displacementMap;
+      uniform int iterations; uniform float depth; uniform float smoothing; uniform float displacement; uniform float time;
+      varying vec3 v_pos; varying vec3 v_dir;
+    `+shader.fragmentShader;
+    shader.fragmentShader=shader.fragmentShader.replace(/void main\(\) \{/,match=>`
+      vec3 displacePoint(vec3 p,float strength){vec2 uv=equirectUv(normalize(p));vec2 scroll=vec2(time,0.);vec3 a=texture2D(displacementMap,uv+scroll).rgb;vec3 b=texture2D(displacementMap,uv*FLIP-scroll).rgb;a-=.5;b-=.5;return p+strength*(a+b);}
+      vec3 marchMarble(vec3 rayOrigin,vec3 rayDir){float perIteration=1./float(iterations);vec3 deltaRay=rayDir*perIteration*depth;vec3 p=rayOrigin;float totalVolume=0.;for(int i=0;i<40;i++){if(i>=iterations)break;vec3 displaced=displacePoint(p,displacement);vec2 uv=equirectUv(normalize(displaced));float heightMapVal=texture2D(heightMap,uv).r;float height=length(p);float cutoff=1.-float(i)*perIteration;float slice=smoothstep(cutoff,cutoff+smoothing,heightMapVal);totalVolume+=slice*perIteration;p+=deltaRay;}return mix(colorA,colorB,totalVolume);}
+    `+match);
+    shader.fragmentShader=shader.fragmentShader.replace(/vec4 diffuseColor\s*=\s*vec4\( diffuse, opacity \);/,`vec3 rayDir=normalize(v_dir);vec3 rayOrigin=v_pos;vec3 rgb=marchMarble(rayOrigin,rayDir);vec4 diffuseColor=vec4(rgb,1.);`);
+  };
+  return material;
+}
+
+let bounds={left:0,right:0,floor:0,top:0};
+const random=(min,max)=>min+Math.random()*(max-min);
+function fit(){
+  const rect=stage.getBoundingClientRect();
+  renderer.setSize(rect.width,rect.height,false);
+  camera.aspect=rect.width/Math.max(rect.height,1);camera.updateProjectionMatrix();
+  const viewHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.position.z;
+  const viewWidth=viewHeight*camera.aspect;
+  bounds={left:-viewWidth*.025,right:viewWidth*.5-viewHeight*.07,floor:-viewHeight*.5,top:viewHeight*.5};
+  const count=48;
+  for(let i=0;i<count;i++){
+    const radius=random(viewHeight*.039,viewHeight*.052);
+    const mesh=new THREE.Mesh(new THREE.SphereGeometry(radius,56,40),magicalMaterial(palette[i%palette.length]));
+    const minX=bounds.left+radius,maxX=bounds.right-radius;
+    const body={x:random(minX,maxX),y:bounds.top+radius+random(.15,viewHeight*.38),vx:i%5===0?random(-.8,.25):random(.45,1.65),vy:random(-.4,.45),radius,mass:radius*radius,angle:random(0,Math.PI*2),spin:random(-.35,.35),spawnAt:i*random(.055,.13),active:false};
+    if(reducedMotion){const columns=5,row=Math.floor(i/columns),col=i%columns;body.x=Math.max(minX,bounds.right-viewHeight*.08-(columns-1-col)*viewHeight*.084);body.y=bounds.floor+radius+row*viewHeight*.084;body.spawnAt=0;body.vx=0;body.vy=0;body.active=true}
+    mesh.position.set(body.x,body.y,0);mesh.userData.body=body;
+    scene.add(mesh);balls.push(mesh);
+  }
+}
+
+function collide(a,b){
+  const dx=b.x-a.x,dy=b.y-a.y,distance=Math.hypot(dx,dy),minimum=a.radius+b.radius;
+  if(distance<=0||distance>=minimum)return;
+  const nx=dx/distance,ny=dy/distance,overlap=minimum-distance;
+  const invA=1/a.mass,invB=1/b.mass,total=invA+invB;
+  a.x-=nx*overlap*(invA/total);a.y-=ny*overlap*(invA/total);
+  b.x+=nx*overlap*(invB/total);b.y+=ny*overlap*(invB/total);
+  const relative=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+  if(relative<0){const impulse=-(1.45*relative)/total;a.vx-=impulse*invA*nx;a.vy-=impulse*invA*ny;b.vx+=impulse*invB*nx;b.vy+=impulse*invB*ny;
+    const tangentX=-ny,tangentY=nx,slip=(b.vx-a.vx)*tangentX+(b.vy-a.vy)*tangentY,friction=Math.min(Math.abs(slip)*.12,Math.abs(impulse)*.28);const sign=Math.sign(slip);a.vx+=sign*friction*invA*tangentX;a.vy+=sign*friction*invA*tangentY;b.vx-=sign*friction*invB*tangentX;b.vy-=sign*friction*invB*tangentY;
+    a.spin-=impulse*.008;b.spin+=impulse*.008;
+  }
+}
+
+function stepPhysics(dt,elapsed){
+  const substeps=3,step=dt/substeps,gravity=6.5;
+  for(let sub=0;sub<substeps;sub++){
+    balls.forEach(mesh=>{
+      const b=mesh.userData.body;if(elapsed<b.spawnAt)return;b.active=true;
+      if(!reducedMotion){b.vy-=gravity*step;b.x+=b.vx*step;b.y+=b.vy*step;b.spin*=Math.exp(-5*step);
+        if(b.y-b.radius<bounds.floor){b.y=bounds.floor+b.radius;if(Math.abs(b.vy)>.55)b.vy=-b.vy*.26;else b.vy=0;b.vx*=Math.pow(.88,step*60);b.angle+=b.vx/b.radius*step;
+          if(Math.abs(b.vx)<.035)b.vx=0;
+        }else{b.angle+=b.spin*step}
+        if(b.x-b.radius<bounds.left){b.x=bounds.left+b.radius;b.vx=Math.abs(b.vx)*.68;b.spin=-b.spin*.45}
+        if(b.x+b.radius>bounds.right){b.x=bounds.right-b.radius;b.vx=-Math.abs(b.vx)*.68;b.spin=-b.spin*.45}
+      }
+    });
+    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+      const a=balls[i].userData.body,b=balls[j].userData.body;if(a.active&&b.active)collide(a,b);
+    }
+  }
+  balls.forEach(mesh=>{const b=mesh.userData.body;mesh.position.set(b.x,b.y,0);mesh.rotation.z=b.angle});
+}
+
+function addEnvironment(){
+  const image=document.createElement('canvas');image.width=512;image.height=256;
+  const c=image.getContext('2d'),gradient=c.createLinearGradient(0,0,0,256);gradient.addColorStop(0,'#151821');gradient.addColorStop(.46,'#53463f');gradient.addColorStop(1,'#ffb878');c.fillStyle=gradient;c.fillRect(0,0,512,256);
+  [[38,70,55,7],[180,42,90,9],[345,62,68,6],[445,120,30,34]].forEach(([x,y,w,h])=>{c.shadowColor='#fff1d8';c.shadowBlur=28;c.fillStyle='#fff3dc';c.fillRect(x,y,w,h)});
+  const environment=new THREE.CanvasTexture(image);environment.mapping=THREE.EquirectangularReflectionMapping;scene.environment=environment;
+}
+
+function init(){
+  addEnvironment();
+  loadTexture(heightURL,'height');loadTexture(displacementURL,'displacement');
+  fit();
+  let last=clock.getElapsedTime();
+  const loop=()=>{requestAnimationFrame(loop);const elapsed=clock.getElapsedTime(),dt=Math.min(elapsed-last,.033);last=elapsed;
+    if(!reducedMotion)stepPhysics(dt,elapsed);
+    balls.forEach(mesh=>{const shader=mesh.material.userData.shader;if(shader)shader.uniforms.time.value=reducedMotion?0:elapsed*.02});
+    renderer.render(scene,camera);
+  };
+  window.addEventListener('resize',()=>{balls.splice(0).forEach(mesh=>{scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose()});fit()});
+  loop();
+}
+
+init();
+</script>
+</body>
+</html>
