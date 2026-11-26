@@ -6,6 +6,7 @@ on:
       - "index-v2.html"
       - "assets/tib-consent.js"
       - "assets/tib-consent.css"
+      - "assets/audio/**"
       - "functions/**"
       - "_routes.json"
       - "_redirects"
@@ -20,6 +21,7 @@ on:
       - "sitemap_index.xml"
       - "tools/package-site.sh"
       - "qa/test_blog_publication.py"
+      - "qa/test_article_audio.py"
       - ".github/workflows/consent-qa.yml"
 
 permissions:
@@ -70,3 +72,8 @@ jobs:
           TIB_PREVIEW_URL: http://127.0.0.1:8788
           TIB_BROWSER_EXECUTABLE: /usr/bin/google-chrome
         run: python qa/test_cookie_consent.py
+      - name: Verify article audio playback
+        env:
+          TIB_PREVIEW_URL: http://127.0.0.1:8788
+          TIB_BROWSER_EXECUTABLE: /usr/bin/google-chrome
+        run: python qa/test_article_audio.py
