@@ -30,14 +30,14 @@ cp "$project_root/index-v2.html" "$destination/index.html"
 for directory in assets functions privacy-policy work-with-me 404_not_found author; do
   cp -R "$project_root/$directory" "$destination/"
 done
-for file in _routes.json robots.txt sitemap.xml sitemap_index.xml tib-admin-avatar.png; do
+for file in _routes.json _redirects robots.txt sitemap.xml sitemap_index.xml tib-admin-avatar.png; do
   cp "$project_root/$file" "$destination/"
 done
 
 # Explicitly include published posts; do not copy templates, research or drafts.
-mkdir -p "$destination/blog/annual-strength-training-calendar"
+mkdir -p "$destination/blog/plan-your-strength-training-week"
 cp "$project_root/blog/index.html" "$destination/blog/index.html"
-cp "$project_root/blog/annual-strength-training-calendar/index.html" \
-  "$destination/blog/annual-strength-training-calendar/index.html"
+cp "$project_root/blog/plan-your-strength-training-week/index.html" \
+  "$destination/blog/plan-your-strength-training-week/index.html"
 
 echo "Cloudflare Pages website assembled at $destination"
