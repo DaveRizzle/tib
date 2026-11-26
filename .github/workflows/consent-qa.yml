@@ -8,6 +8,7 @@ on:
       - "assets/tib-consent.css"
       - "functions/**"
       - "_routes.json"
+      - "_redirects"
       - "privacy-policy/**"
       - "work-with-me/**"
       - "404_not_found/**"
@@ -18,6 +19,7 @@ on:
       - "sitemap.xml"
       - "sitemap_index.xml"
       - "tools/package-site.sh"
+      - "qa/test_blog_publication.py"
       - ".github/workflows/consent-qa.yml"
 
 permissions:
@@ -52,15 +54,17 @@ jobs:
       - name: Verify blog and sitemap publication
         run: |
           curl --fail --silent --show-error http://127.0.0.1:8788/blog/ > /tmp/tib-blog.html
-          curl --fail --silent --show-error http://127.0.0.1:8788/blog/annual-strength-training-calendar/ > /tmp/tib-article.html
+          curl --fail --silent --show-error http://127.0.0.1:8788/blog/plan-your-strength-training-week/ > /tmp/tib-article.html
           for page in /tmp/tib-blog.html /tmp/tib-article.html; do
             grep -Fq '<meta name="robots" content="index,follow">' "$page"
             grep -Fq '<time datetime=' "$page"
           done
           curl --fail --silent --show-error http://127.0.0.1:8788/tib-admin-avatar.png > /tmp/tib-avatar.png
           test -s /tmp/tib-avatar.png
-          curl --fail --silent --show-error http://127.0.0.1:8788/sitemap.xml | python -c 'import sys, xml.etree.ElementTree as ET; root = ET.parse(sys.stdin).getroot(); ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"; assert root.tag == ns + "urlset"; urls = {node.text for node in root.iter(ns + "loc")}; assert "https://www.theinfinitebody.com/blog/" in urls; assert "https://www.theinfinitebody.com/blog/annual-strength-training-calendar/" in urls'
+          curl --fail --silent --show-error http://127.0.0.1:8788/sitemap.xml | python -c 'import sys, xml.etree.ElementTree as ET; root = ET.parse(sys.stdin).getroot(); ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"; assert root.tag == ns + "urlset"; urls = {node.text for node in root.iter(ns + "loc")}; assert "https://www.theinfinitebody.com/blog/" in urls; assert "https://www.theinfinitebody.com/blog/plan-your-strength-training-week/" in urls'
           curl --fail --silent --show-error http://127.0.0.1:8788/sitemap_index.xml | python -c 'import sys, xml.etree.ElementTree as ET; root = ET.parse(sys.stdin).getroot(); ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"; assert root.tag == ns + "sitemapindex"; assert [node.text for node in root.iter(ns + "loc")] == ["https://www.theinfinitebody.com/sitemap.xml"]'
+      - name: Verify article URL migration
+        run: python qa/test_blog_publication.py
       - name: Run consent browser QA
         env:
           TIB_PREVIEW_URL: http://127.0.0.1:8788
