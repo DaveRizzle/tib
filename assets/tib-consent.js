@@ -107,9 +107,33 @@
     document.head.appendChild(script);
   }
 
-  function sendBookingClick() {
+  function ctaLocation(link) {
+    if (!link || !link.closest) return 'other';
+    if (link.getAttribute('data-tib-cta') === 'article') return 'article';
+    if (link.closest('header')) return 'header';
+    if (link.closest('footer')) return 'footer';
+    return 'other';
+  }
+
+  function sendBookingClick(event) {
     if (analyticsAllowed() && (productionHost || localTestId)) {
-      window.gtag('event', 'booking_click', { booking_provider: 'google_calendar', transport_type: 'beacon' });
+      window.gtag('event', 'booking_click', {
+        booking_provider: 'google_calendar',
+        cta_location: ctaLocation(event && event.currentTarget),
+        transport_type: 'beacon'
+      });
+    }
+  }
+
+  function sendCoachingInterest(event) {
+    var destination = event.currentTarget.getAttribute('data-tib-coaching');
+    if (destination !== 'how_it_works' && destination !== 'pricing') return;
+    if (analyticsAllowed() && (productionHost || localTestId)) {
+      window.gtag('event', 'coaching_interest', {
+        coaching_destination: destination,
+        cta_location: 'article',
+        transport_type: 'beacon'
+      });
     }
   }
 
@@ -215,6 +239,7 @@
       state = saved;
       if (state.analytics) loadAnalytics(false);
     }
+    document.querySelectorAll('a[data-tib-coaching]').forEach(function (link) { link.addEventListener('click', sendCoachingInterest); });
     var ui = createUI();
     if (!state || gpcEnabled()) ui.banner.hidden = false;
     document.querySelectorAll('a[href="https://calendar.app.google/ZyW4qWin1iDgaxhX6"]').forEach(function (link) { link.addEventListener('click', sendBookingClick); });
