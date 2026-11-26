@@ -1,0 +1,15 @@
+hypothesis,theme,evidence_type,phrase,source_path,source_url,implication
+H1,busy_schedule,competitor_headline,"Achieve your goals on your schedule",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Schedule flexibility is already used as a commercial promise.
+H1,busy_schedule,competitor_copy,"a coach who adjusts around the week you actually have",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Adaptive weekly decision-making is a concrete mechanism.
+H1,travel,competitor_customer_quote,"I travel constantly and my schedule changes every week",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Direct situational language supporting the travel/schedule trigger.
+H1,life_constraint,competitor_customer_quote,"my life took a back seat to my coach's plan",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Fear of coaching rigidity is an objection worth testing.
+H1,busy_professionals,competitor_copy,"Personal training made for busy professionals",pages/www.genacksfitness.com/index.txt,https://www.genacksfitness.com/,The segment label is used commercially but does not prove search demand.
+H1,travel,competitor_offer,"Travel-Proof Training",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Travel can support a named resource or content cluster.
+H2,plateau,competitor_headline,"Say Goodbye To Your Plateau",pages/strengthsystem.com/index.txt,https://strengthsystem.com/,Plateau language is used to bridge into customised coaching.
+H2,stuck,competitor_headline,"For Ambitious Individuals Over 40 Who Lift Weights but Feel Stuck",pages/www.witsandweights.com/apply.txt,https://www.witsandweights.com/apply/,Stuck language is paired with an experienced-lifter identity.
+H2,guidance,competitor_copy,"It's not effort, it's guidance",pages/www.witsandweights.com/services.txt,https://www.witsandweights.com/services/,Separates committed trainees from motivation-led beginner positioning.
+H3,data,competitor_copy,"connect the dots between your body, your data, and your lifestyle",pages/www.witsandweights.com/services.txt,https://www.witsandweights.com/services/,Data is framed as interpretation and guidance rather than dashboards.
+H3,data,competitor_copy,"Programming decisions are data-driven",pages/wenningstrength.com/online-coaching.txt,https://wenningstrength.com/online-coaching/,Data-led decisions are used as a qualification signal.
+H3,customisation,competitor_copy,"updated weekly based on your performance, schedule, and equipment",pages/wenningstrength.com/online-coaching.txt,https://wenningstrength.com/online-coaching/,Specific adaptation inputs make personalisation credible.
+all,guesswork,competitor_copy,"takes all of the guesswork out of load selection",pages/strengthsystem.com/index.txt,https://strengthsystem.com/,Reduced decision load is a repeated value mechanism and matches TIB's app.
+all,template_alternative,competitor_copy,"not a template you fall off",pages/barbell-logic.com/coaching.txt,https://barbell-logic.com/coaching/,Generic templates are a clear failed alternative.

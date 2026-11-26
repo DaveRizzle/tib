@@ -1,0 +1,19 @@
+source_page_id,destination_page_id,implementation_timing,source_context,anchor_guidance,purpose
+HOME,PLATEAU,when_PLATEAU_published,Problem/plateau section,"Use a natural phrase such as why strength progress stalls; avoid repeating exact-match anchors",Move problem-aware visitors to substantive diagnosis.
+HOME,TRAVEL,when_TRAVEL_published,FAQ or schedule-constraint section,"Use practical travel/schedule wording",Expose a distinct guide without turning navigation into a keyword list.
+HOME,METHOD,only_if_METHOD_published,How-it-works and app sections,"How the coaching method works",Offer deeper mechanism evidence while keeping HOME concise.
+HOME,RESULTS,only_if_RESULTS_published,Testimonials/results section,"Read the full client story or see client results",Connect concise proof to substantive permissioned cases.
+PLATEAU,HOME,at_PLATEAU_launch,Sections where generic fixes stop being sufficient,"Online strength coaching or individual coaching judgement where context supports it",Create a clear commercial bridge without making every paragraph a CTA.
+PLATEAU,TRAVEL,when_both_published,Discussion of interrupted progression,"Strength training while traveling or training disruption",Help visitors whose plateau is caused by travel/schedule changes.
+PLATEAU,METHOD,only_if_METHOD_published,Programme-adjustment explanation,"How training decisions are adjusted",Support claims about individual adaptation.
+TRAVEL,HOME,at_TRAVEL_launch,Conclusion and coaching-support section,"Coaching that adapts to changing schedules",Route readers with recurring disruption to the service owner.
+TRAVEL,PLATEAU,when_both_published,Return-to-normal-training section,"Avoiding or diagnosing a strength plateau after disruption",Connect distinct but adjacent problems.
+TRAVEL,METHOD,only_if_METHOD_published,Load substitution and programme-adjustment section,"How the programme adapts",Demonstrate the mechanism behind travel flexibility.
+METHOD,HOME,if_METHOD_published,Opening provider reference and final CTA,"Online strength coaching",Return methodology readers to the commercial owner.
+METHOD,PLATEAU,if_METHOD_published,Progression/fatigue example,"Strength-training plateaus",Show the method applied to a real problem.
+METHOD,TRAVEL,if_METHOD_published,Schedule/equipment adaptation example,"Strength training while traveling",Show the method applied to changing constraints.
+RESULTS,HOME,if_RESULTS_published,Each case conclusion and final CTA,"Explore online strength coaching or book a fit call",Connect proof to the single commercial owner.
+PLATEAU,RESULTS,only_if_relevant_case_exists,Relevant plateau example,"Use the case participant/outcome rather than a generic keyword anchor",Support advice with permissioned evidence.
+TRAVEL,RESULTS,only_if_relevant_case_exists,Relevant schedule/travel example,"Use the case participant/situation rather than a generic keyword anchor",Support adaptability claims with permissioned evidence.
+GUIDES_HUB,PLATEAU,only_after_hub_gate,Guide listing,"Use the actual editorial title",Distribute discovery without manufactured exact-match anchors.
+GUIDES_HUB,TRAVEL,only_after_hub_gate,Guide listing,"Use the actual editorial title",Distribute discovery without manufactured exact-match anchors.

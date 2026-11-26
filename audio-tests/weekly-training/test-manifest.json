@@ -1,0 +1,55 @@
+{
+  "purpose": "Local proof of concept, not a published article audio version",
+  "model_id": "phonon-31m-en",
+  "voice": "Trevor",
+  "playback": "disabled during generation",
+  "export_rate": 1.0,
+  "script_words": 313,
+  "source_article": "blog/plan-your-strength-training-week/index.html",
+  "source_article_sha256": "3b95076b41a9a74e4648b9160319198229e27ba1de3bea548315251809fc4dd4",
+  "script_sha256": "7bfa172e5eec06e8551b65376c5845b1549d5557184536cbd695036373f582bc",
+  "coverage": [
+    "Title and authorship",
+    "Intended reader",
+    "Weekly scheduling table narrated as sentences",
+    "Three-week attendance table narrated as sentences",
+    "Ten of twelve and eighty-three percent",
+    "Periodization pronunciation",
+    "Discovery-call duration"
+  ],
+  "excluded_from_speech": [
+    "HTML and structured data",
+    "Navigation and footer",
+    "Published and updated dates",
+    "Raw table headings and cells",
+    "URLs",
+    "CSS and accessibility identifiers"
+  ],
+  "proposed_web_scope": [
+    "Player immediately below article summary",
+    "Static MP3 file",
+    "Native accessible audio controls",
+    "preload=none and no autoplay",
+    "Identify it as an audio version with tables described aloud",
+    "Generate a full narration only after the sample is reviewed"
+  ],
+  "review_needed": [
+    "Voice and pronunciation",
+    "Pacing and pauses",
+    "Accuracy of table descriptions",
+    "Full article adaptation before publication"
+  ],
+  "generation": {
+    "job_id": "29FA2DEA-4E6B-41EC-8DED-64C355187B8E",
+    "state": "completed",
+    "duration_seconds": 118.244,
+    "cleaned_input_matches_script": true
+  },
+  "verification": {
+    "raw_metadata_excluded_from_input": true,
+    "generated_waveform_inspection": "readable mono 24 kHz WAV, duration matches Say It receipt",
+    "audio_transcription_check": "completed; no page metadata or raw table labels detected; see verification-report.json for recognition differences",
+    "mp3_conversion": "completed, mono 24 kHz at 96 kbps, loudness adjusted",
+    "listening_review": "Accepted by David: voice, pacing and pronunciation sound good"
+  }
+}

@@ -16,6 +16,7 @@ Run from the repository root:
 
 ```sh
 python3 analytics/ga4.py audit
+python3 analytics/ga4.py performance
 python3 analytics/ga4.py today
 python3 analytics/ga4.py events
 python3 analytics/ga4.py realtime
@@ -23,6 +24,12 @@ python3 analytics/ga4.py realtime
 
 All commands use read-only scopes and real API requests. Failures exit nonzero.
 Empty report rows mean no reportable data was returned, not that tracking is verified.
+
+`performance` is the default decision-making view for website SEO reporting. It filters
+to website stream `16279643437`, the two production hostnames, and excludes South
+Africa at query time. The underlying GA4 data is retained; this is not a collection
+filter. It also excludes the separate Calendar booking-confirmation stream so its
+anonymous server-side users cannot inflate website metrics.
 The audit reports the last 30 days through yesterday; today's processed data may lag.
 Legacy script names delegate to these commands. These are operational diagnostics,
 not automated unit tests. Output contains business analytics: do not publish it.

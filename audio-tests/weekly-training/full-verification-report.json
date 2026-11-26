@@ -1,0 +1,102 @@
+{
+  "transcription_engine": "Local Whisper base, English, CPU",
+  "script_word_count_normalized": 1440,
+  "transcript_word_count_normalized": 1441,
+  "recognition_differences": [
+    {
+      "operation": "replace",
+      "script": "planned",
+      "transcript": "plan"
+    },
+    {
+      "operation": "replace",
+      "script": "planned",
+      "transcript": "plan"
+    },
+    {
+      "operation": "replace",
+      "script": "missed",
+      "transcript": "miss"
+    },
+    {
+      "operation": "replace",
+      "script": "what got",
+      "transcript": "look on"
+    },
+    {
+      "operation": "replace",
+      "script": "planned",
+      "transcript": "plan"
+    },
+    {
+      "operation": "replace",
+      "script": "workout",
+      "transcript": "work out"
+    },
+    {
+      "operation": "replace",
+      "script": "planned",
+      "transcript": "plan"
+    }
+  ],
+  "page_metadata_detected": false,
+  "two_table_narrations_present": true,
+  "opening_and_closing_present": true,
+  "listening_review_needed": [
+    {
+      "time_seconds": 344,
+      "script": "What got in the way, and what could I change for the next three weeks?",
+      "recognition": "Look on in the way and what could I change for the next three weeks?",
+      "followup": "Same ambiguity in a slower excerpt, using both Whisper base and tiny. Human listening required to distinguish synthesis from recognition error.",
+      "resolution": "Reviewed and accepted by David; no audio correction requested"
+    }
+  ],
+  "mp3": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "24000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "508.212000",
+      "size": "6099596",
+      "bit_rate": "96016"
+    }
+  },
+  "mp3_sha256": "0757958ed108c716c49b49c32f8b5a53418cd16c8967bb4bab0a5d80ff526340",
+  "measured_loudness_lufs": -16.77,
+  "measured_true_peak_dbtp": -1.72,
+  "measured_loudness_range_lu": 3.3,
+  "playback_checks": {
+    "desktop_and_mobile": "passed",
+    "player_below_summary": "passed",
+    "download_and_decode": "passed",
+    "seeking_with_range_capable_local_proxy": "passed",
+    "raw_wrangler_seeking": "not supported by local Pages runtime; returns HTTP 200 for Range requests",
+    "consent_regression": "passed",
+    "canonical_redirect_and_sitemap_regression": "passed",
+    "desktop_mobile_visual_review": "passed",
+    "no_autoplay": "passed; currentTime remains zero until user plays",
+    "metadata_preload": "duration available before play; timeline can be used immediately on range-capable server",
+    "seek_to_review_before_play": "passed on desktop/mobile local preview at 344 seconds"
+  },
+  "publication_status": "local only",
+  "local_listening_review": {
+    "url": "http://127.0.0.1:8000/audio-review.html",
+    "excerpt_url": "http://127.0.0.1:8000/audio-review-5m44s.mp3",
+    "excerpt_original_start_seconds": 338,
+    "excerpt_duration_seconds": 14,
+    "production_included": false
+  },
+  "human_listening_review": {
+    "status": "approved",
+    "reviewer": "David Robertson",
+    "scope": "Full narration, player presentation and flagged passage near 5:44",
+    "evidence": "User listened to the flagged passage and said: Sounds good to me"
+  },
+  "outstanding_listening_reviews": []
+}

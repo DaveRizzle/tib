@@ -1,0 +1,36 @@
+{
+  "transcription_engine": "Local Whisper base, English, CPU",
+  "script_words_normalized": 320,
+  "transcript_words_normalized": 320,
+  "differences_after_number_and_punctuation_normalization": [
+    {
+      "operation": "replace",
+      "script": "and",
+      "transcript": "in"
+    }
+  ],
+  "metadata_detected_in_transcription": false,
+  "table_schedule_and_attendance_narration": "present",
+  "numbers_and_periodization": "recognized",
+  "human_listening_review": "pending",
+  "mp3": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "24000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "118.244000",
+      "size": "1419884",
+      "bit_rate": "96064"
+    }
+  },
+  "mp3_sha256": "0fe8ed82df92400e2a043a2f2b05d94cb76f6413aa717429f22c8c321baeadbe",
+  "mp3_measured_loudness_lufs": -16.73,
+  "mp3_measured_true_peak_dbtp": -1.83,
+  "mp3_measured_loudness_range_lu": 2.7
+}
