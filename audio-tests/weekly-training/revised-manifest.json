@@ -1,0 +1,35 @@
+{
+  "kind": "Revised full-article listening adaptation",
+  "source_article": "blog/plan-your-strength-training-week/index.html",
+  "source_article_sha256": "f36b2ab6bffc249fd2d74a7f352766328a62e006d7f8248932823b403370859d",
+  "script": "audio-tests/weekly-training/narration-full.txt",
+  "script_sha256": "c05d6af4fdd91f9253d5934b67c3740409407bd103caf516eec40833dcc8c4b7",
+  "script_words": 1981,
+  "model": "gradium/phonon-31m-en@92741c5b07d085ff840e26fea8ce43110b87852f",
+  "runtime": "ptts 0.7.1 (official Apple silicon release, Metal)",
+  "voice": "Trevor (Gradium voice catalog)",
+  "generation_language": "en",
+  "spoken_adaptations": [
+    "All three training-week matrices described in prose",
+    "Percentages, session spacing, and recovery implications explained aloud",
+    "Page navigation, metadata, and raw table cells omitted"
+  ],
+  "verification": {
+    "local_whisper_model": "base",
+    "transcript": "audio-tests/weekly-training/transcription-revised/phonon-trevor-revised.txt",
+    "word_alignment_ratio": 0.9792,
+    "human_listening_review": "not performed",
+    "longest_script_difference_words": 3
+  },
+  "mp3": {
+    "path": "assets/audio/plan-your-strength-training-week.mp3",
+    "sha256": "7a43812cf13f50c68b9df606901e590afefd27b52d33b4c3ad033f713fc58c4f",
+    "duration_seconds": 703.36,
+    "bitrate_kbps": 96,
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "measured_loudness_lufs": -17.19,
+    "measured_true_peak_dbtp": -1.72
+  },
+  "player_cache_version": "v=2"
+}

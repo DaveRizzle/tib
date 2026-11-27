@@ -38,7 +38,9 @@ def test_article_audio():
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             assert audio.evaluate("a => a.paused && a.currentTime === 0")
             page.wait_for_function("document.querySelector('audio').readyState >= 1")
-            assert 480 < audio.evaluate("a => a.duration") < 540
+            assert 680 < audio.evaluate("a => a.duration") < 730
+            assert "11 min 43 sec" in page.locator("#audioDescription").inner_text()
+            assert page.locator("#audioVersionNote").count() == 0
             assert "Narrated with an AI voice" not in page.locator(".article-audio").inner_text()
             assert "Tables are described aloud" not in page.locator(".article-audio").inner_text()
             assert not any("google-analytics.com" in url or "googletagmanager.com" in url
@@ -60,11 +62,11 @@ def test_article_audio():
             # Verify seeking before play when byte ranges are available.
             audio.evaluate("a => { a.muted = true; }")
             duration = audio.evaluate("a => a.duration")
-            assert 480 < duration < 540, "Wrong audio asset: expected the full narration"
+            assert 680 < duration < 730, "Wrong audio asset: expected the revised narration"
             if partial.status == 206:
-                audio.evaluate("a => a.currentTime = 344")
+                audio.evaluate("a => a.currentTime = 350")
                 page.wait_for_function("!document.querySelector('audio').seeking")
-                assert abs(audio.evaluate("a => a.currentTime") - 344) < 1
+                assert abs(audio.evaluate("a => a.currentTime") - 350) < 1
             page.wait_for_function("document.querySelector('audio').readyState >= 2")
             audio.evaluate("a => a.play()")
             page.wait_for_function("document.querySelector('audio').currentTime > 0.1")
