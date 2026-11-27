@@ -30,6 +30,11 @@ cp "$project_root/index-v2.html" "$destination/index.html"
 for directory in assets functions privacy-policy work-with-me 404_not_found author; do
   cp -R "$project_root/$directory" "$destination/"
 done
+
+# App verification pages are maintained separately from the WordPress export.
+mkdir -p "$destination/google-workspace-app/privacy"
+cp "$project_root/google-workspace-app/index.html" "$destination/google-workspace-app/index.html"
+cp "$project_root/google-workspace-app/privacy/index.html" "$destination/google-workspace-app/privacy/index.html"
 for file in _routes.json _redirects robots.txt sitemap.xml sitemap_index.xml tib-admin-avatar.png; do
   cp "$project_root/$file" "$destination/"
 done
