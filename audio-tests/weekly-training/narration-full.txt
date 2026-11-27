@@ -8,11 +8,17 @@ How do I fit my strength program into the week?
 
 The biggest planning mistake I see in strength training is committing to a training program without deciding when its sessions will happen.
 
-Saying you will train four times a week gives you a number. Putting those four sessions on specific days gives you a schedule you can review. At the end of the week, you can compare what you intended to do with what you actually completed and see how well the plan fits your circumstances.
+Saying you will train four times a week gives you a target. Choosing the days gives you a schedule you can check against what actually happens.
 
-Take Alex, a fictional executive who wants to squat more weight for five reps. His program calls for four strength sessions a week, including two lower-body sessions. He puts them on Monday, Tuesday, Thursday, and Friday, and commits to that schedule for the next three weeks.
+Take Alex, a fictional executive who wants to squat more weight for five reps. His program calls for four strength sessions a week, including two lower-body sessions. Alex schedules them for Monday, Tuesday, Thursday, and Friday, and commits to that schedule for the next three weeks.
 
 At four sessions a week, he has twelve planned workouts. That gives him a clear starting point for checking how consistently he follows the program.
+
+The problem.
+
+It's tempting to play catch-up when you miss a training session. Sometimes you can move it without disrupting the rest of the week. Repeated changes, though, can crowd sessions together or push them into days already claimed by other commitments.
+
+That can make recovery and the remaining sessions harder to manage. Keep your original plan alongside what you actually did, so you can see whether a day needs to change rather than continually trying to catch up.
 
 How do I build my weekly training matrix?
 
@@ -58,6 +64,20 @@ In week one, Alex planned four strength sessions and completed all four on the p
 
 Alex completed ten of twelve planned strength sessions, or about eighty-three percent. More useful than the percentage alone is the pattern: both missed sessions were Tuesday's lower-body workout. His overall attendance hides a repeated gap in the work tied to his squat goal.
 
+Two other versions of the same three-week plan show why it helps to record both completed sessions and the days on which they happened. Alex originally planned to train on Monday, Tuesday, Thursday, and Friday in each version. These are illustrative outcomes, not predictions about what moving a workout will cause.
+
+In the first version, Alex moves Tuesday's lower-body session to Wednesday in weeks two and three. In week one, he completes the four sessions on the original days. In each of weeks two and three, he trains upper body on Monday, lower body on Wednesday, upper body on Thursday, and lower body on Friday. He completes four strength sessions in each week, and all twelve across the three weeks.
+
+That is one hundred percent session adherence. Ten of the twelve workouts happen on the days he originally chose, so his planned-day adherence is about eighty-three percent. But the completed count does not show how close the sessions are. Moving the first lower-body workout from Tuesday to Wednesday leaves about forty-eight hours before Friday's second lower-body workout, rather than about seventy-two hours. It also puts workouts on Wednesday and Thursday back to back.
+
+For Alex's strength goal, that shorter gap could leave him less ready for Friday's lower-body work, especially if both sessions involve hard squats. If he were training mainly to build muscle and each session included many hard sets, the same change could make fatigue harder to manage. Neither outcome is automatic: the exercises, number of sets, effort, and Alex's recovery all matter. His workout log can show whether he is still completing the later sessions as intended. Wednesday may be a better day to choose for the next block, but only if the recovery between sessions also fits.
+
+In the second version, Alex misses sessions and cannot fit them in later. He completes all four planned workouts in week one. In weeks two and three, he completes Monday's and Thursday's upper-body sessions, but misses Tuesday's and Friday's lower-body sessions. That is two completed workouts out of four in each of those weeks, and eight out of twelve overall.
+
+That is about sixty-seven percent session adherence. In this hypothetical version, he hopes to catch up on the missed sessions but cannot fit them around his other commitments and recovery. The percentage describes what he completed; it does not prove that trying to move sessions caused the missed workouts. His record shows which parts of the plan need another look before the next three weeks.
+
+Missing those sessions reduces the training Alex actually completes; it does not itself increase fatigue. A missed session in week one would not, on its own, create extra fatigue by week three either. The recovery concern arises if he tries to make up that work by crowding hard sessions into later weeks, especially if the planned sets or loads are also rising. Review attendance alongside weights, reps, and recovery before deciding whether to move a session, change the plan, or leave a missed workout missed.
+
 Ask yourself:
 
 How many of my planned sessions did I complete each week?
@@ -80,7 +100,7 @@ If you planned four sessions each week but consistently completed two, look at w
 
 Keep the original plan in your record. Changing next week's schedule does not change what you planned or completed last week.
 
-How does this lead into periodization?
+How does your weekly record guide future training?
 
 Once you know which sessions you can reliably attend, you have a clearer starting point for planning how the training itself changes over time.
 
