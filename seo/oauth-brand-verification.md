@@ -53,6 +53,15 @@ App pages are hand-maintained at `google-workspace-app/`, with shared CSS in `as
 
 Publication IDs, final branding state and live-access results are recorded in the completion update below.
 
+### Publication update
+
+- [PR #21](https://github.com/DaveRizzle/tib/pull/21) passed the existing consent, measurement, article/sitemap/migration and audio checks and was merged as `6618bb2b7c81eea03e5820c515b668f6877ba40a`.
+- First production deployment: <https://d1af1e27.tib-marketing.pages.dev>. Both canonical `www` app URLs return HTTP 200 with the intended titles, canonical metadata, content and working local assets. Native Chrome loaded the app page without authentication and showed the decoded support email. Local desktop/mobile review covered both app and privacy content; a dark-background logo variant corrected contrast.
+- Ordinary and Googlebot-UA curl requests return the expected page content without an interstitial or `cf-mitigated` header. Default `Python-urllib/3.15` requests return HTTP 403 / Cloudflare **error 1010**; the external web-fetch tool also could not open the URLs. Do not describe these as a universal crawler-access pass or Google's actual verification fetch.
+- [Cloudflare's error-1010 documentation](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/) identifies the Pages-managed Browser Integrity Check, including custom domains, and says it cannot be disabled by a zone skip/setting. Use an honest descriptive user agent for QA clients. The existing Wrangler token also lacks zone settings/ruleset access; no permissions were expanded and no security settings changed.
+- Cloudflare initially transformed support links into JavaScript-decoded email placeholders. Follow-up source comments use Cloudflare's documented [per-address exclusion](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/#prevent-cloudflare-from-obfuscating-email) so the app's public support contact remains readable in static HTML. This is confined to the two app pages.
+- After the owner completed Google's sign-in recheck, the agent entered the two published URLs and `theinfinitebody.com` in Branding and clicked Save. The UI showed a loading indicator; the browser window then became unavailable before a fresh readback. Persistence must be confirmed by the owner or a restored session. App name, support/developer contacts, Terms, audience and scopes were not changed. Verification, publication and Basic application controls were not clicked.
+
 ## References
 
 - [Google authentication brand verification](https://developers.google.com/identity/verification/authentication-verification).
