@@ -147,6 +147,7 @@
   .article-audio p{margin-top:8px;color:var(--grey);font-size:.94rem}
   .article-audio audio{display:block;width:100%;max-width:100%;margin-top:16px}
   .article-audio a{color:#b94a00;text-decoration:underline;text-underline-offset:3px}
+  .article-audio .audio-version-note{color:#45484e}
   main{padding:0 0 clamp(36px,5vw,56px)}
   article{max-width:760px;margin:0 auto}
   .prose{font-size:1.08rem;line-height:1.8}
@@ -183,6 +184,10 @@
   .matrix-cell.week{text-align:left;color:#d7d9d8}
   .matrix-cell.session{background:#ff8500}
   .matrix-cell.off{color:#21c6bd}
+  .matrix-cell.moved{background:#394b54;color:#a7eff0}
+  .matrix-cell.missed{background:#713d3d;color:#fff}
+  .matrix-cell.completed{background:#39564b;color:#fff}
+  .comparison-matrix{min-width:680px}
   .matrix-note{display:block;margin-top:10px;color:#d7d9d8;font-size:.85rem}
   .post-end{max-width:760px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--line)}
   .post-end p{color:var(--grey)}
@@ -262,7 +267,8 @@
     <section class="article-audio" id="listen" aria-labelledby="audioTitle">
       <h2 id="audioTitle">Listen to this article</h2>
       <p id="audioDescription">8 min 28 sec</p>
-      <audio controls preload="metadata" aria-label="Listen to How to Plan Your Strength Training Week" aria-describedby="audioDescription">
+      <p class="audio-version-note" id="audioVersionNote">This recording reflects the previous version of the article. Updated narration is being prepared.</p>
+      <audio controls preload="metadata" aria-label="Listen to How to Plan Your Strength Training Week" aria-describedby="audioDescription audioVersionNote">
         <source src="../../assets/audio/plan-your-strength-training-week.mp3?v=1" type="audio/mpeg">
         Your browser does not support audio playback. <a href="../../assets/audio/plan-your-strength-training-week.mp3?v=1">Download the MP3</a> to listen.
       </audio>
@@ -278,9 +284,16 @@
         <div class="section-inner">
           <h2 id="weekly-commitment">How do I fit my strength program into the week?</h2>
           <p>The biggest planning mistake I see in strength training is committing to a training program without deciding when its sessions will happen.</p>
-          <p>Saying you will train four times a week gives you a number. Putting those four sessions on specific days gives you a schedule you can review. At the end of the week, you can compare what you intended to do with what you actually completed and see how well the plan fits your circumstances.</p>
-          <p>Take Alex, a fictional executive who wants to squat more weight for five reps. His program calls for four strength sessions a week, including two lower-body sessions. He puts them on Monday, Tuesday, Thursday, and Friday, and commits to that schedule for the next three weeks.</p>
+          <p>Saying you will train four times a week gives you a target. Choosing the days gives you a schedule you can check against what actually happens.</p>
+          <p>Take Alex, a fictional executive who wants to squat more weight for five reps. His program calls for four strength sessions a week, including two lower-body sessions. Alex schedules them for Monday, Tuesday, Thursday, and Friday, and commits to that schedule for the next three weeks.</p>
           <p>At four sessions a week, he has 12 planned workouts. That gives him a clear starting point for checking how consistently he follows the program.</p>
+        </div>
+      </section>
+      <section class="article-band" aria-labelledby="catch-up">
+        <div class="section-inner">
+          <h2 id="catch-up">The problem</h2>
+          <p>It&#x27;s tempting to play catch-up when you miss a training session. Sometimes you can move it without disrupting the rest of the week. Repeated changes, though, can crowd sessions together or push them into days already claimed by other commitments.</p>
+          <p>That can make recovery and the remaining sessions harder to manage. Keep your original plan alongside what you actually did, so you can see whether a day needs to change rather than continually trying to catch up.</p>
         </div>
       </section>
       <section class="article-band" aria-labelledby="training-matrix">
@@ -318,6 +331,39 @@
           <p>Check your record at the end of each week, then review the three weeks together. For Alex, an illustrative record might look like this:</p>
           <div class="table-scroll" role="region" aria-label="Alex’s illustrative three-week attendance record" tabindex="0"><table class="sample-plan"><caption>Alex’s illustrative three-week attendance record</caption><thead><tr><th scope="col">Week</th><th scope="col">Planned strength sessions</th><th scope="col">Completed</th><th scope="col">What happened</th></tr></thead><tbody><tr><th scope="row">1</th><td>4</td><td>4</td><td>All on the planned days</td></tr><tr><th scope="row">2</th><td>4</td><td>3</td><td>Tuesday missed: meeting</td></tr><tr><th scope="row">3</th><td>4</td><td>3</td><td>Tuesday missed: work deadline</td></tr><tr><th scope="row">Total</th><td>12</td><td>10</td><td></td></tr></tbody></table></div>
           <p>Alex completed 10 of 12 planned strength sessions, or about 83%. More useful than the percentage alone is the pattern: both missed sessions were Tuesday&#x27;s lower-body workout. His overall attendance hides a repeated gap in the work tied to his squat goal.</p>
+          <p>Two other versions of the same three-week plan show why it&#x27;s useful to record both completed sessions and the days on which they happened. In each example, Alex originally planned to train on Monday, Tuesday, Thursday, and Friday. The figures below are illustrative outcomes, not predictions about what moving a workout will cause.</p>
+          <div class="matrix-wrap" role="region" aria-labelledby="moved-matrix-caption" tabindex="0">
+            <div class="matrix comparison-matrix">
+              <table class="matrix-table">
+                <caption class="matrix-title" id="moved-matrix-caption">Example 1 · Alex moves Tuesday&#x27;s session and completes it on Wednesday</caption>
+                <thead><tr><th scope="col" class="matrix-cell day">Week</th><th scope="col" class="matrix-cell day">Mon</th><th scope="col" class="matrix-cell day">Tue</th><th scope="col" class="matrix-cell day">Wed</th><th scope="col" class="matrix-cell day">Thu</th><th scope="col" class="matrix-cell day">Fri</th><th scope="col" class="matrix-cell day">Done</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row" class="matrix-cell week">Wk 1</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell session">Lower 1</td><td class="matrix-cell off">Off</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell session">Lower 2</td><td class="matrix-cell completed">4 of 4</td></tr>
+                  <tr><th scope="row" class="matrix-cell week">Wk 2</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell moved">Moved</td><td class="matrix-cell session">Lower 1</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell session">Lower 2</td><td class="matrix-cell completed">4 of 4</td></tr>
+                  <tr><th scope="row" class="matrix-cell week">Wk 3</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell moved">Moved</td><td class="matrix-cell session">Lower 1</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell session">Lower 2</td><td class="matrix-cell completed">4 of 4</td></tr>
+                </tbody>
+              </table>
+              <span class="matrix-note">Upper 1/2 and Lower 1/2 are the four sessions in Alex&#x27;s original plan. “Moved” marks the planned Tuesday slot; the session was completed on Wednesday.</span>
+            </div>
+          </div>
+          <p>He completes all 12 planned strength sessions: 100% session adherence. Ten of those 12 happen on the days he originally chose, so his planned-day adherence is about 83%. But the completed count does not show how close the sessions are. Moving Lower 1 from Tuesday to Wednesday leaves about 48 hours before Friday&#x27;s Lower 2, rather than about 72 hours. It also puts workouts on Wednesday and Thursday back to back.</p>
+          <p>For Alex&#x27;s strength goal, that shorter gap could leave him less ready for Friday&#x27;s lower-body work, especially if both sessions involve hard squats. If he were training mainly to build muscle and each session included many hard sets, the same change could make fatigue harder to manage. Neither outcome is automatic: the exercises, number of sets, effort, and Alex&#x27;s recovery all matter. His workout log can show whether he is still completing the later sessions as intended. Wednesday may be a better day to choose for the next block, but only if the recovery between sessions also fits.</p>
+          <div class="matrix-wrap" role="region" aria-labelledby="missed-matrix-caption" tabindex="0">
+            <div class="matrix comparison-matrix">
+              <table class="matrix-table">
+                <caption class="matrix-title" id="missed-matrix-caption">Example 2 · Missed sessions cannot be fitted in later</caption>
+                <thead><tr><th scope="col" class="matrix-cell day">Week</th><th scope="col" class="matrix-cell day">Mon</th><th scope="col" class="matrix-cell day">Tue</th><th scope="col" class="matrix-cell day">Wed</th><th scope="col" class="matrix-cell day">Thu</th><th scope="col" class="matrix-cell day">Fri</th><th scope="col" class="matrix-cell day">Done</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row" class="matrix-cell week">Wk 1</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell session">Lower 1</td><td class="matrix-cell off">Off</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell session">Lower 2</td><td class="matrix-cell completed">4 of 4</td></tr>
+                  <tr><th scope="row" class="matrix-cell week">Wk 2</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell missed">Missed</td><td class="matrix-cell off">Off</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell missed">Missed</td><td class="matrix-cell completed">2 of 4</td></tr>
+                  <tr><th scope="row" class="matrix-cell week">Wk 3</th><td class="matrix-cell session">Upper 1</td><td class="matrix-cell missed">Missed</td><td class="matrix-cell off">Off</td><td class="matrix-cell session">Upper 2</td><td class="matrix-cell missed">Missed</td><td class="matrix-cell completed">2 of 4</td></tr>
+                </tbody>
+              </table>
+              <span class="matrix-note">The planned Tuesday and Friday lower-body sessions are missed in weeks 2 and 3.</span>
+            </div>
+          </div>
+          <p>Here Alex completes 8 of 12 planned strength sessions: about 67% session adherence. In this hypothetical version, he hopes to catch up on the missed sessions but cannot fit them around his other commitments and recovery. The percentage describes what he completed; it does not prove that trying to move sessions caused the missed workouts. His record shows which parts of the plan need another look before the next three weeks.</p>
+          <p>Missing those sessions reduces the training Alex actually completes; it does not itself increase fatigue. A missed session in week one would not, on its own, create extra fatigue by week three either. The recovery concern arises if he tries to make up that work by crowding hard sessions into later weeks, especially if the planned sets or loads are also rising. Review attendance alongside weights, reps, and recovery before deciding whether to move a session, change the plan, or leave a missed workout missed.</p>
           <p>Ask yourself:</p>
           <ul><li>How many of my planned sessions did I complete each week?</li><li>Did I train on the days I chose, or did I repeatedly move sessions?</li><li>Did the same workout or part of a workout keep getting missed?</li><li>What got in the way, and what could I change for the next three weeks?</li></ul>
           <p>Three weeks gives you a practical starting point for reviewing how your schedule fits your life. It will not capture every kind of disruption, so keep reviewing as your circumstances change. Use the record alongside your workout log to understand both what you completed and how your training is progressing.</p>
