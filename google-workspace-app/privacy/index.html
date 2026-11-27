@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google-data privacy | The Infinite Body</title>
+  <meta name="description" content="How The Infinite Body Google OAuth application accesses, uses, stores and shares Google data, including internal reports, Workspace workflows, AI processing and deletion requests.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.theinfinitebody.com/google-workspace-app/privacy/">
+  <link rel="icon" type="image/png" href="/assets/favicon-tib-180.png">
+  <link rel="stylesheet" href="/assets/tib-google-app.css">
+  <link rel="stylesheet" href="/assets/tib-consent.css">
+  <script defer src="/assets/tib-consent.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="wrap header-inner">
+    <a class="logo" href="/" aria-label="The Infinite Body coaching website"><img src="/assets/logo-tib-landscape-dark.svg" width="826" height="74" alt="The Infinite Body"></a>
+    <nav aria-label="Application navigation"><a href="/google-workspace-app/">About the Google app</a><a href="/google-workspace-app/privacy/" aria-current="page">Google-data privacy</a></nav>
+  </div></header>
+  <main id="main">
+    <div class="hero"><div class="wrap">
+      <p class="eyebrow">The Infinite Body · Google application</p>
+      <h1>Google-data privacy disclosure</h1>
+      <p class="intro">How the business Google app accesses, uses, stores and shares information, and how to revoke access or request deletion.</p>
+      <p><a href="/google-workspace-app/">About The Infinite Body Google app</a></p>
+    </div></div>
+    <div class="wrap layout">
+      <aside class="contents" aria-labelledby="contents-title"><h2 id="contents-title">On this page</h2><ol>
+        <li><a href="#operator">Who operates the app</a></li><li><a href="#access">Access and purposes</a></li><li><a href="#storage">Storage and security</a></li><li><a href="#retention">Retention and deletion</a></li><li><a href="#sharing">Sharing and AI tools</a></li><li><a href="#limited-use">Google policies</a></li><li><a href="#control">Your controls and support</a></li><li><a href="#permissions">Technical permissions</a></li>
+      </ol></aside>
+      <div class="prose">
+        <section id="operator">
+          <h2>Who operates the app</h2>
+          <p><strong>David Robertson, trading as The Infinite Body</strong>, operates the Google OAuth application named <strong>The Infinite Body</strong>. Contact: <a href="mailto:admin@theinfinitebody.com">admin@theinfinitebody.com</a>.</p>
+          <p>This disclosure covers the operator-run Google-connected business tools described on the <a href="/google-workspace-app/">application information page</a>. It also identifies the related Analytics and Calendar service-account workflows where their handling differs. The <a href="/privacy-policy/">website privacy notice</a> covers the wider marketing site.</p>
+          <p class="updated">Effective and last updated: <time datetime="2026-11-27">27 November 2026</time>.</p>
+        </section>
+        <section id="access">
+          <h2>Access and purposes</h2>
+          <p>Google OAuth authorisation lets the business operator grant access to Google services. Scripts use the account identity to check that business reporting uses the intended account. The app's existing authorisation is broader than the reporting scripts alone.</p>
+          <ul>
+            <li><strong>Identity:</strong> Google account identity and email address, to identify the authorising business account.</li>
+            <li><strong>Search Console:</strong> verified site properties, search queries, pages, impressions, clicks, position and segmentation such as country/device, plus indexing and sitemap information, to understand organic search visibility and diagnose website issues. The reporting grant is read-only.</li>
+            <li><strong>Google Analytics:</strong> property/stream configuration and aggregated website or booking reports, including visits, engagement, sources, countries and recorded events, to understand the website journey. The business OAuth reporting grant is read-only; separate service-account tools can administer Analytics settings when instructed.</li>
+            <li><strong>Google Ads:</strong> accessible customer accounts, account settings, campaign status and performance, search terms, keyword ideas and historical demand metrics, to support internal reporting and organic SEO research. Keyword-planning availability depends on the project's API approval. The Ads OAuth permission itself includes management capabilities; the research scripts do not launch ads or change spending.</li>
+            <li><strong>Workspace content:</strong> Gmail messages and attachments, Drive files and metadata, Calendar events, Contacts, Sheets, Docs, Slides and Forms content, for operator-directed business communication, scheduling and document work. Existing scopes can allow reading, creating, editing, sending and deleting data, depending on the service.</li>
+            <li><strong>Workspace administration:</strong> user, group, organisational-unit, domain, customer and role information, plus audit/usage reports, for administering the business Workspace. Directory permissions include administration; audit and usage report permissions are read-only.</li>
+          </ul>
+          <p>Information is accessed when the relevant workflow runs, within the access the Google account has granted. The technical scope list below describes granted capabilities; it does not mean every category is downloaded in every report.</p>
+          <h3>Related Calendar booking measurement</h3>
+          <p>A separate service-account integration reads selected Calendar event metadata, including event identifiers, status, creation/update times, organiser address and appointment markers. It recognises the business booking schedule, maintains a deduplication register in Cloudflare, and sends booking/cancellation signals to a separate Google Analytics stream.</p>
+          <p>The register stores hashed event keys, random per-booking identifiers, status/timestamps and delivery state. Analytics payloads contain a pseudonymous identifier, event time, booking/cancellation event, hashed event reference and fixed source labels. Attendee names and email addresses, event titles and notes are not included in these payloads. These booking signals are not linked to website sessions or used as proof of attendance or a paying client.</p>
+        </section>
+        <section id="storage">
+          <h2>Storage and security</h2>
+          <p>OAuth client credentials and refresh tokens are stored in access-restricted local credential files outside the public website. The operator's local disk uses FileVault encryption. API requests use HTTPS. Reporting tools can print results and save local CSV reports or analysis notes; outputs supplied to AI tools can also be retained in those tools' conversation or session records.</p>
+          <p>The related booking register is held in Cloudflare Durable Object storage. Its service-account credentials and integration secrets use Cloudflare's encrypted secret storage, and its management endpoints require authentication. Google hosts the underlying Workspace records and Analytics data.</p>
+          <p>The website deployment process includes only selected public files and excludes local Google credentials and research reports. These controls reduce exposure; they do not guarantee that any system is free from security risk.</p>
+        </section>
+        <section id="retention">
+          <h2>Retention and deletion</h2>
+          <ul>
+            <li><strong>Local reports and notes:</strong> the current scripts do not implement automatic expiry or a fixed deletion timetable. Saved files remain until the operator removes them.</li>
+            <li><strong>OAuth credentials:</strong> local authorisation files remain until removed or replaced. Google can expire or revoke the underlying access. Revocation does not itself remove the local files.</li>
+            <li><strong>Booking register:</strong> the current integration retains its deduplication and delivery records without an automatic purge. Expiry of a queued delivery changes its processing status; it does not erase the record.</li>
+            <li><strong>Google Analytics:</strong> the current property setting retains event/user-level data for 14 months and resets user-data retention on new activity. This setting does not define the lifetime of all aggregated reports, exports, source Calendar records or other Google services.</li>
+            <li><strong>Google Workspace and processors:</strong> original Google records and copies in AI tools, logs or backups follow the relevant service and account settings. This app has no single control that automatically erases all such copies.</li>
+          </ul>
+          <p>To request deletion of app-held information, email <a href="mailto:admin@theinfinitebody.com">admin@theinfinitebody.com</a> with the account or record concerned. Do not send passwords or access tokens. Requests require manual review to identify the relevant local files, booking records and processor copies. Any limits, such as unavailable copies, service retention or a legal requirement to retain a record, need to be addressed for the particular request. No automatic deletion deadline is promised.</p>
+        </section>
+        <section id="sharing">
+          <h2>Sharing, service providers and AI tools</h2>
+          <p>Google processes authorisation, Workspace records, Search Console, Ads and Analytics data as part of the relevant services. Cloudflare hosts these public pages and the separate booking integration and register. Public website requests expose ordinary request information to the hosting provider. Optional website Analytics uses the site's existing cookie controls; reading these pages does not require accepting analytics cookies.</p>
+          <p>The business uses AI-assisted operator workflows, including <strong>OpenAI Codex/ChatGPT</strong> and tooling for <strong>Anthropic Claude</strong>. Results returned to an assistant, report excerpts and content supplied by the operator can be processed by the relevant AI provider and retained in its session history. This is third-party processing. It is not accurate to say that Google-derived information is never shared with an AI provider.</p>
+          <p>Provider retention, human review and model-training treatment depend on the product, account plan, terms and data controls. This disclosure does not claim that every AI service or account has training disabled or zero retention. The operator must check the applicable controls before supplying Google Workspace content; Google's restrictions described below apply to raw data and derived data alike.</p>
+          <p>The reporting code contains no data-resale or advertising-audience export workflow. Reports are used for the operator's internal business work. Operator-directed email or file sharing can send selected information to recipients chosen for that task. Granting OAuth access does not authorise an advertising campaign or an increase in advertising spend.</p>
+          <p>Provider information: <a href="https://policies.google.com/privacy">Google privacy policy</a>, <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>, <a href="https://openai.com/policies/privacy-policy/">OpenAI privacy policy</a> and <a href="https://www.anthropic.com/legal/privacy">Anthropic privacy policy</a>.</p>
+        </section>
+        <section id="limited-use">
+          <h2>Google User Data Policy and Limited Use</h2>
+          <p>Use of Google API information is subject to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a> and, for Workspace data, the <a href="https://developers.google.com/workspace/workspace-api-user-data-developer-policy">Google Workspace user data and developer policy</a>, including applicable Limited Use requirements.</p>
+          <p>Those requirements limit Google data use to the disclosed, appropriate features; restrict transfers to permitted purposes, including consented feature provision, security and legal obligations; and restrict human access. They prohibit selling or transferring covered data for advertising, using it for ad targeting or credit decisions, and using Workspace data to train or improve general-purpose AI models beyond the specific user's permitted personalised feature. Aggregating or deriving information does not remove these restrictions.</p>
+          <p>AI processing must be assessed against those requirements and the relevant account controls. This page documents the current workflows and their limits; publication is not a Google verification decision or an independent certification of processor compliance.</p>
+        </section>
+        <section id="control">
+          <h2>Your controls and support</h2>
+          <p>Review or remove the app's connection in <a href="https://myaccount.google.com/connections">Google Account connections</a>. Revoking the OAuth connection stops future access through that authorisation. It does not automatically delete prior exports or AI sessions, delete the underlying Google records, or remove access granted separately to a service account. The operator can remove separate service-account access in the relevant Google service.</p>
+          <p>For access, correction, deletion or support questions, contact <a href="mailto:admin@theinfinitebody.com">admin@theinfinitebody.com</a>. The operator handles these requests manually. Website analytics preferences are available through <a class="tib-consent-settings" href="#tib-cookie-settings">Cookie settings</a>.</p>
+          <p>Material changes to Google-data use need an updated disclosure and any consent Google requires before the new use begins.</p>
+        </section>
+        <section id="permissions">
+          <h2>Technical permissions in the existing business grant</h2>
+          <p>The existing business OAuth authorisation contains the following scopes. Some allow writes or administration. The public pages do not request or add permissions.</p>
+          <details><summary>View the full Google OAuth scope list</summary><ul class="technical-scopes">
+            <li><code>openid</code></li>
+            <li><code>https://www.googleapis.com/auth/userinfo.email</code></li>
+            <li><code>https://www.googleapis.com/auth/adwords</code></li>
+            <li><code>https://www.googleapis.com/auth/webmasters.readonly</code></li>
+            <li><code>https://www.googleapis.com/auth/analytics.readonly</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.user</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.group</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.orgunit</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.domain</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.customer</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.directory.rolemanagement</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.reports.audit.readonly</code></li>
+            <li><code>https://www.googleapis.com/auth/admin.reports.usage.readonly</code></li>
+            <li><code>https://mail.google.com/</code></li>
+            <li><code>https://www.googleapis.com/auth/drive</code></li>
+            <li><code>https://www.googleapis.com/auth/calendar</code></li>
+            <li><code>https://www.googleapis.com/auth/contacts</code></li>
+            <li><code>https://www.googleapis.com/auth/spreadsheets</code></li>
+            <li><code>https://www.googleapis.com/auth/documents</code></li>
+            <li><code>https://www.googleapis.com/auth/presentations</code></li>
+            <li><code>https://www.googleapis.com/auth/forms</code></li>
+          </ul></details>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© 2026 David Robertson · The Infinite Body</span><nav aria-label="Footer"><a href="/google-workspace-app/">About the Google app</a><a href="/">Coaching website</a><a href="/privacy-policy/">Website privacy</a><a class="tib-consent-settings" href="#tib-cookie-settings">Cookie settings</a></nav></div></footer>
+</body>
+</html>

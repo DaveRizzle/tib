@@ -6,6 +6,8 @@ on:
       - "index-v2.html"
       - "assets/tib-consent.js"
       - "assets/tib-consent.css"
+      - "assets/tib-google-app.css"
+      - "google-workspace-app/**"
       - "assets/audio/**"
       - "functions/**"
       - "_routes.json"
